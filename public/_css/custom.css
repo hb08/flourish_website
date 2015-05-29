@@ -1,0 +1,175 @@
+@import url(http://fonts.googleapis.com/css?family=Rochester|Cherry+Swash:400,700|Comfortaa:400,300,700|Milonga);
+html, button, input, select, textarea, body,
+.pure-g [class *= "pure-u"] {
+    font-family: Comfortaa, sans-serif;
+}
+html {
+	background: #ceffbf; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ceffbf 15%, #efffea 24%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#ceffbf), color-stop(24%,#efffea), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ceffbf 15%,#efffea 24%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ceffbf 15%,#efffea 24%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ceffbf 15%,#efffea 24%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ceffbf 15%,#efffea 24%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ceffbf', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+header h1, header p {
+	font-size: 1px;
+	text-indent: -9999px;	
+}
+h1 {
+	color: #E75C24;
+	font-family: "Cherry Swash";
+	font-weight: 400;
+	font-size: 3em;
+	margin-bottom: 0em;
+}
+h2 {
+	color: #E75C24;
+	font-family: Milonga;
+}
+nav a { 	
+	font-family: "Cherry Swash";
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+a {
+	color: #F09120;
+}
+a:hover {
+	color: #E75C24;
+}
+body, .center {
+	text-align: center;
+}
+body {
+	width: 95%;
+	margin: 1% auto;
+}
+
+/*							*
+ * 			NAVBAR			*
+ * 							*/
+.navbar {
+	background-color: #3E2813;
+	padding: 1em 0 .5em;
+	border-radius: 12px;
+	position: relative;
+} 
+nav li a {
+	color: #FFF;
+	position: relative;
+	text-decoration: none;
+	text-align: left;
+}
+nav li a span.icon {
+	background-image: url("../_images/icons/nav_sprite.png");
+	background-repeat: no-repeat;
+	background-position: top left;
+	display: inline-block;
+	margin-right: 4px;
+	height: 19px;
+	width: 22px;
+}
+nav li a p {
+	position: relative;
+	display: inline-block;
+	margin: .3em 0;
+	top: -4px;
+	font-size: 1em;	
+}
+nav li a:hover {
+  color: #FDC573;
+}
+nav li.search a span.icon {
+  background-position: -23px top;
+}
+nav li.plot a span.icon {
+  background-position: -45px top;
+}
+nav li.calendar a span.icon {
+  background-position: -67px top;
+}
+nav li.overview a span.icon {
+  background-position: -89px top;
+}
+nav li.account a span.icon {
+  background-position: -111px top;
+}
+nav li a:hover span.icon {
+	background-position: left bottom;	
+}
+nav li.search a:hover span.icon {
+  background-position: -23px bottom;
+}
+nav li.plot a:hover span.icon {
+  background-position: -45px bottom;
+}
+nav li.calendar a:hover span.icon {
+  background-position: -67px bottom;
+}
+nav li.overview a:hover span.icon {
+  background-position: -89px bottom;
+}
+nav li.account a:hover span.icon {
+  background-position: -111px bottom;
+}
+.dd {
+	display: none;
+	position: absolute;
+  		right: 3.8em;
+  		bottom: -60px;
+}
+.dd li {
+	background-color: #3F2915;
+	list-style-type: none;
+	padding: .5em 1em;
+}
+.dd li:nth-child(1n+2){
+	border-top: 1px solid #5B9942;
+}
+/*							*
+ * 			LOGIN			*
+ * 							*/
+.panel-g {
+	background-color: #0A4725;
+	border-radius: 15px;
+	box-shadow: 0 0 7px 2px #26420A;
+	margin-top: -1em;
+	padding: 2em 2em;
+}
+.panel-g .inlay {
+	background-color: #F5FFF3;
+	padding: 1em;
+	border-radius: 15px
+}
+
+p > input:first-of-type {
+  margin-right: 10px;
+}
+
+input {
+  border-color: #0D6132;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 6px 5px;
+  color: #0D1632;
+}
+/* Alter Placeholder Text Color */
+::-webkit-input-placeholder {
+   color: #448e32;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: #448e32;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #448e32;  
+}
+:-ms-input-placeholder {  
+   color: #448e32;  
+}
