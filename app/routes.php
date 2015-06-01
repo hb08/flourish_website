@@ -15,7 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
-
+Route::get('home',function()
+{
+	return View::make('hello');
+});
 /* Show Registration */
 Route::get('/register', array('uses' => 'HomeController@showRegister'));
 /* Process Registration */

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Rochester|Cherry+Swash:400,700|Comfortaa:400,300,700|Milonga);
+@import url(http://fonts.googleapis.com/css?family=Rochester|Cherry+Swash:400,700|Comfortaa:300,400,700|Milonga);
 html, button, input, select, textarea, body,
 .pure-g [class *= "pure-u"] {
     font-family: Comfortaa, sans-serif;
@@ -12,15 +12,24 @@ html {
 	background: -ms-linear-gradient(top,  #ceffbf 15%,#efffea 24%,#ffffff 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #ceffbf 15%,#efffea 24%,#ffffff 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ceffbf', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	height: 100%;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: #70bg32;
+    background-repeat:no-repeat;
 }
 header h1, header p {
+	position: absolute;
 	font-size: 1px;
+	margin: 0;
+	padding: 0;
 	text-indent: -9999px;	
+}
+header a {
+	margin-top: 1em;
+	display: block;
 }
 h1 {
 	color: #E75C24;
@@ -44,37 +53,84 @@ a {
 a:hover {
 	color: #E75C24;
 }
+a.linkButton {
+	background: #ffd47f; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #ffd47f 21%, #f09120 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(21%,#ffd47f), color-stop(100%,#f09120)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #ffd47f 21%,#f09120 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #ffd47f 21%,#f09120 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #ffd47f 21%,#f09120 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  #ffd47f 21%,#f09120 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd47f', endColorstr='#f09120',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	box-shadow: 0 0 5px 2px #093B0D;
+	color: #000;
+	font: 1.4em "Milonga";
+	padding: .5em;
+	border-radius: 5px;
+	position: relative;
+	top: .5em;
+}
+a.linkButton:hover {
+	background: #ffd47f; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #ffd47f 21%, #e75c24 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(21%,#ffd47f), color-stop(100%,#e75c24)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #ffd47f 21%,#e75c24 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #ffd47f 21%,#e75c24 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #ffd47f 21%,#e75c24 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  #ffd47f 21%,#e75c24 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd47f', endColorstr='#e75c24',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
 body, .center {
 	text-align: center;
 }
 body {
-	width: 95%;
-	margin: 1% auto;
+	background-color: transparent;
+}
+.filler {
+	display: block;
+	height: 1em;
+}
+.row {
+	position: relative;
+}
+body > .row:nth-of-type(n+2), .row > .row {
+	margin-bottom:1em;
+}
+header {
+	margin-bottom: 1em;
 }
 
 /*							*
  * 			NAVBAR			*
  * 							*/
-.navbar {
+
+nav {
 	background-color: #3E2813;
-	padding: 1em 0 .5em;
+	padding: 1em 0 1em;
 	border-radius: 12px;
 	position: relative;
 } 
+nav li {
+	list-style-type: none;
+	text-align: center;
+}
 nav li a {
 	color: #FFF;
 	position: relative;
 	text-decoration: none;
 	text-align: left;
 }
-nav li a span.icon {
-	background-image: url("../_images/icons/nav_sprite.png");
+span.icon {
 	background-repeat: no-repeat;
 	background-position: top left;
-	display: inline-block;
-	margin-right: 4px;
+	display: inline-block;	
 	height: 19px;
 	width: 22px;
+}
+nav li a span.icon {
+	background-image: url("../_images/icons/nav_sprite.png");
+	margin-right: 4px;
 }
 nav li a p {
 	position: relative;
@@ -119,11 +175,15 @@ nav li.overview a:hover span.icon {
 nav li.account a:hover span.icon {
   background-position: -111px bottom;
 }
+ul.dropdown {
+	background-color: #3E2813;	
+}
 .dd {
 	display: none;
 	position: absolute;
-  		right: 3.8em;
-  		bottom: -60px;
+  		right: 1.8em;
+  		bottom: -75px;
+	z-index:2;
 }
 .dd li {
 	background-color: #3F2915;
@@ -133,6 +193,7 @@ nav li.account a:hover span.icon {
 .dd li:nth-child(1n+2){
 	border-top: 1px solid #5B9942;
 }
+
 /*							*
  * 			LOGIN			*
  * 							*/
@@ -173,3 +234,107 @@ input {
 :-ms-input-placeholder {  
    color: #448e32;  
 }
+/*							*
+ * 			INDEX			*
+ * 							*/
+
+
+/*				Image Slider				*/
+.slides > div {
+	position: relative;
+}
+.slides .cap {
+	background-color: #094724;
+	color: #fff;
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	width: 39em;
+	height: 6em;
+	padding: 10px;
+}
+.slides .cap p {
+	font-size: .9em;
+	font-weight: 300;
+	text-align: left;
+}
+.slick-slide {
+	border: 3px solid #094724;
+}
+.slick-dots li.slick-active button:before {
+  	opacity: 1;
+    color: #094724 !important;
+}
+.slick-dots li button:before{
+  	opacity: .75;
+    color: rgb(236, 102, 0) !important;	
+}
+ 
+/*				Welcome				*/
+
+.welcome {
+	text-align: left;
+}
+.welcome h1 {
+	text-align: center;
+	margin: 0 auto .5em;
+}
+.welcome li {
+	list-style-type: none;
+}
+
+/*				Panel Grid				*/
+.panel-grid {
+	background-color: #fff;
+	box-shadow: 0 0 8px 0px #6A997F;
+	height: 200px;
+}
+.panel-grid a {
+	color: #000;
+}
+.panel-grid a:hover {
+	color: #E75C24;	
+}
+.panel-grid h1 {
+	color: #759932;
+	font-size: 1.5em;
+	margin: 0;	
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+.panel-grid a:hover h1 {
+	color: #E75C24;
+}
+.panel-grid p {
+	margin: 0;
+	padding: .5em;
+}
+.panel-grid span.icon {
+	background-image: url('../_images/icons/grid.png');
+	height: 36px;
+	margin-right: 4px;
+	width: 38px;
+	vertical-align: text-top;
+}
+.panel-grid a:hover span.icon {
+	background-position-y: -35px;
+}
+.panel-grid span.icon.search {
+	background-position-x: 1px;
+}
+.panel-grid span.icon.plot {
+	background-position-x: -38px;
+}
+.panel-grid span.icon.calendar {
+	background-position-x: -77px;	
+}
+.panel-grid span.icon.overview {
+	background-position-x: -118px;
+}
+
+
+
+
+
+
+

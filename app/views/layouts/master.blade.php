@@ -4,17 +4,17 @@
     @include('includes.head')    
 </head>
 <body>
-    <div>
+    <div class="row">
        <header>
             @include('includes.header')
        </header>
     </div>
-    <div class="pure-g">
-	    <nav class="pure-u-20-24 offset-md-1-12">
+    <div class="row">
+	    <nav>
 	    	@include('includes.nav')	
 		</nav>    	
     </div>
-    <div class="pure-g">
+    <div class="row">
             @yield('content')
     </div>
     <div>
