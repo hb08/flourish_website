@@ -1,8 +1,5 @@
 @extends('layouts.master')
 @section('content')
-@if(Session::has('ustatus'))
-	<p class="row">Logged In!</p>	
-@endif
 <div class="row">
 	<div class="medium-6 columns slides">
 		<div>

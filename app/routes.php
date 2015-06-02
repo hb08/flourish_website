@@ -32,7 +32,7 @@ Route::get('/logout', array('uses' => 'HomeController@doLogout'));
 
 Route::get('/search', function()
 {
-	return View::make('hello');
+	return View::make('search');
 });
 
 Route::get('/calendar', function()
