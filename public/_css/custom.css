@@ -100,7 +100,11 @@ body > .row:nth-of-type(n+2), .row > .row {
 header {
 	margin-bottom: 1em;
 }
-
+footer p {
+	font-size: .8em;
+	margin-bottom: 0;
+	line-height: 1.1em;
+}
 /*							*
  * 			NAVBAR			*
  * 							*/

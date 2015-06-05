@@ -1,5 +1,6 @@
 <footer>
 	<p class="center">Copyright &copy; 2015 BetaCode</p>
+	<p class="center">Plant information from <a href="http://www.almanac.com/">The Old Farmer's Almanac</a>, <a href="http://www.motherearthnews.com/organic-gardening/vegetables.aspx">Mother Earth News</a>, and <a href="http://www.gardening.cornell.edu/homegardening/">Cornell University</a> </p>
 </footer>
 <!-- jQuery -->
 <script type="text/javascript" src="{{ asset('_js/vendor/jquery.js') }}"></script>
