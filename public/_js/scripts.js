@@ -6,7 +6,7 @@ $(document).ready(function(){
 		accessibility: true,
 		arrows:true,
 		autoplay: true,
-		autoplaySpeed: 3000,
+		autoplaySpeed: 5000,
 		dots: true,
 		dotsClass: 'slick-dots',
 		pauseOnDotsHover: false,

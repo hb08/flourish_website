@@ -9,7 +9,7 @@
 					<b>Sweet Summer Strawberries</b>
 					can be yours. Easy to care for, and even easier to propogate, start preparing your garden today to reap the rewards for years to come!
 				</p>
-				<a href="#" class="medium-3 columns linkButton">
+				<a href="details/3" class="medium-3 columns linkButton">
 					See More +	
 				</a>
 			</div>
@@ -21,7 +21,7 @@
 					<b>Nothing Beats Broccoli</b>
 					when it comes to a great source of vitamins you can grow in your own backyard. Garden your way to better health today.
 				</p>
-				<a href="#" class="medium-3 columns linkButton">
+				<a href="details/4" class="medium-3 columns linkButton">
 					See More +	
 				</a>
 			</div>
@@ -45,17 +45,17 @@
 			The Sunshite State is the perfect place to grow your very own fruits and vegetables. Finding information on gardening in a state with mild winters can be incredibily defficult, but Flourish is here, to provide you all you need to know to get started on your very own edible garden. 
 		</p>
 		<ul>
-			<li><a href="/search">Search</a> for plants in your zip code.</li>
-			<li>Plan your own garden with our <a href="/plot">Garden Plotter</a>.</li>
-			<li>Add events and milestones to your <a href="/calendar">Calendar</a>.</li>
-			<li>Check your garden status in the <a href="/overview">Garden Overview</a>.</li>
+			<li><a href="search">Search</a> for plants in your zip code.</li>
+			<li>Plan your own garden with our <a href="plot">Garden Plotter</a>.</li>
+			<li>Add events and milestones to your <a href="calendar">Calendar</a>.</li>
+			<li>Check your garden status in the <a href="overview">Garden Overview</a>.</li>
 		</ul>
 	</div>
 </div>
 <div class="row">
 	<div class="medium-3 columns">
 		<div class="panel-grid">
-			<a href="grid">
+			<a href="search">
 				<h1><span class="icon search"></span>Plant Directory</h1>
 				<p>Search for the plants you want to grow by zip code. Filter the results by type, difficulty, or needs. View plant details to find out if it works for you.</p>
 			</a>

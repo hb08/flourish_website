@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-Route::get('home',function()
-{
-	return View::make('hello');
-});
+Route::get('/', function(){return View::make('hello'); });
+Route::get('home',function(){ return View::make('hello'); });
 /* Show Registration */
 Route::get('/register', array('uses' => 'HomeController@showRegister'));
 /* Process Registration */
@@ -29,15 +23,12 @@ Route::get('/login', array('uses' => 'HomeController@showLogin'));
 Route::post('/login', array('uses' => 'HomeController@doLogin'));
 /* Logout */
 Route::get('/logout', array('uses' => 'HomeController@doLogout'));
-
-Route::get('/search', function()
-{
-	return View::make('search');
-});
-
-Route::get('/calendar', function()
-{
-	return View::make('hello');
+/* Plant Directory */
+Route::get('/search', array('uses'=>'PlantController@getPlants'));
+/* Plant Details */
+Route::get('/details/{id}', array('uses' =>'PlantController@plantDetails'));
+Route::get('/calendar', function(){
+	return View::make('pages.calendar');
 });
 
 Route::get('/overview', function()
