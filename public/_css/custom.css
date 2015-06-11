@@ -121,6 +121,7 @@ body, .center {
 
 body {
   background-color: transparent;
+  max-width: 1465px;
 }
 
 .filler {
@@ -1560,10 +1561,11 @@ a#nextMonth:hover {
   height: 42em;
 }
 #calDetails {
-  top: 30% !important;
-  left: 20% !important;
+  top: 24% !important;
+  left: 19.5% !important;
   background: rgba(0, 0, 0, 0.69);
   padding-top: 0;
+  width: 45.6%;
 }
 .detailsPanel {
   background-color: #fff;
