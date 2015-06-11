@@ -1,5 +1,4 @@
 <?php
-
 class PlantController extends BaseController {
 
 	/**
@@ -17,7 +16,7 @@ class PlantController extends BaseController {
 			INNER JOIN pi_soil ON plant_list.soil_id = pi_soil.soil_id
 			INNER JOIN pi_season ON plant_list.season_id = pi_season.season_id
 			INNER JOIN pi_diff ON plant_list.diff_id = pi_diff.diff_id
-			INNER JOIN pi_water ON plant_list.water_id = pi_water.water_id; 
+			INNER JOIN pi_water ON plant_list.water_id = pi_water.water_id;
 		');
 		$plantList = (array)$plants;
 		/* Get the Count */
@@ -30,8 +29,8 @@ class PlantController extends BaseController {
 			'sun' => DB::table('pi_sun')->get(),
 			'type' => DB::table('pi_type')->get(),
 			'water' => DB::table('pi_water')->get()
-		);	
-		/* Return it all in a view */	
+		);
+		/* Return it all in a view */
 		return View::make('pages.search', array('plants' => $plantList, 'count' => $count, 'filter' => $filter ));
 	}
 	public function plantDetails($plantId){
@@ -52,8 +51,8 @@ class PlantController extends BaseController {
 		$plantInfo = DB::table('plant_info')->where('plant_id', $plantId)->get();
 		/* Difficulty Level */
 		$diff = DB::select('
-			SELECT diff_detail FROM pi_diff 
-			INNER JOIN plant_list 
+			SELECT diff_detail FROM pi_diff
+			INNER JOIN plant_list
 			ON pi_diff.diff_id=plant_list.diff_id
 			WHERE plant_list.plant_id = ?', [$plantId]
 		);
@@ -63,9 +62,9 @@ class PlantController extends BaseController {
 		$image_name = str_replace(" ", "_", $image_name);
 		$image_name = str_replace("-", "_", $image_name);
 		$image_location = '_images/plant_images/' . $image_name . '_main.jpg';
-		
-		/* Return view with variables needed */	
+
+		/* Return view with variables needed */
 		return View::make('pages.details', array('chart' => $plantChart["0"], 'imgSrc' => $altImageSrc["0"], 'info' => $plantInfo["0"], 'img' => $image_location, 'diff' => $plant_diff));
-		
+
 	}
 }

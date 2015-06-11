@@ -35,7 +35,7 @@
 					@foreach($filter['soil'] as $s)
 						<option value="{{$s->soil_id }}">{{$s->soil_need}}</option>
 					@endforeach
-				</select>		
+				</select>
 			</div>
 			<div class="medium-2 columns">
 				<select name="sun">
@@ -43,7 +43,7 @@
 					@foreach($filter['sun'] as $s)
 						<option value="{{$s->sun_id }}">{{$s->sun_need}}</option>
 					@endforeach
-				</select>		
+				</select>
 			</div>
 			<div class="medium-2 columns">
 				<select name="type">
@@ -51,7 +51,7 @@
 					@foreach($filter['type'] as $t)
 						<option value="{{ $t->type_id }}">{{$t->plant_type}}</option>
 					@endforeach
-				</select>	
+				</select>
 			</div>
 			<div class="medium-2 columns">
 				<select name="water">
@@ -59,47 +59,50 @@
 					@foreach($filter['water'] as $w)
 						<option value="{{ $w->water_id }}">{{$w->water_need}}</option>
 					@endforeach
-				</select>	
-			</div>	
+				</select>
+			</div>
 	{{ Form::close() }}
 		</div>
 	</div>
 </div>
 <div class="row searchResultInfo">
-<p>{{$count}} results for <span>Florida</span></p>	
+<p>{{$count}} results for <span>Florida</span></p>
 </div>
 <div class="row">
+	<!-- Add a counter -->
+	<?php $counter = 1; ?>
 	@foreach($plants as $plant)
-	<?php 
-		$image_name = strtolower($plant->plant_name);
-		$image_name = str_replace(" ", "_", $image_name);
-		$image_name = str_replace("-", "_", $image_name);
-		$image_location = '_images/plant_images/' . $image_name . '_main.jpg';
+	<?php
 		$plant_diff = '_images/icons/difficulty/' . $plant->diff_detail . '.png';
   	?>
-  	<a class="medium-6 columns plant" href="details/{{$plant->id}}" >
+		@if($counter == $count) <!-- Check if this is the last item using counter -->
+			<a class="medium-6 columns plant end " href="details/{{$plant->id}}" >
+		@else <!-- Otherewise don't add end class, but do add to counter -->
+			<a class="medium-6 columns plant" href="details/{{$plant->id}}" >
+			<?php $counter += 1; ?>
+		@endif
   		<div class="plantImg medium-3 columns">
-			<img src="{{ asset($image_location) }}" alt="{{ $plant->plant_name }}" />
+			<img src="{{ asset(Plants::getAddress($plant->plant_name, 'main')) }}" alt="{{ $plant->plant_name }}" />
   		</div>
-		<div class="plantListing medium-8 columns end">	
+		<div class="plantListing medium-8 columns end">
 			<div class="row">
 				<h1>{{ $plant->plant_name }}</h1>
-			</div>			
+			</div>
 			<div class="row plantDetails">
 				<p class="medium-4 columns">{{ $plant->plant_type }}</p>
-				<p class="medium-8 columns difficulty">Difficulty: <img src="{{ asset($plant_diff) }}"</p>				
+				<p class="medium-8 columns difficulty">Difficulty: <img src="{{ asset($plant_diff) }}"</p>
 			</div>
 			<div class="row plantChart">
 				<div class="medium-5 columns">
 					<p><span>Sun:</span>{{ $plant->sun_need}}</p>
 					<p><span>Season:</span> {{ $plant->season_name}}</p>
-					<p><span>Soil:</span> {{ $plant->soil_need}}</p>	
+					<p><span>Soil:</span> {{ $plant->soil_need}}</p>
 				</div>
 				<div class="medium-7 columns bottom">
 					<p><span>Water:</span> {{ $plant->water_need}}</p>
 					<p><span>Harvest Time:</span> {{ $plant->harvest_time }}</p>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</a>
 	@endforeach

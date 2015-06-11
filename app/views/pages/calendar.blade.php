@@ -4,11 +4,11 @@
 		<div class="medium-2 medium-offset-1 columns dateList">
 			<ul>
 				<li class="heading">June 2015</li>
-				<li class="planting"><a href="#">Planting</a></li>
+				<li class="planting"><a href="#" data-reveal-id="calDetails">Planting</a></li>
 				<li class="prep"><a href="#">Milestone</a></li>
 				<li class="harvest"><a href="#">Harvest</a></li>
 			</ul>
-			<a href="#" class="linkButton">Add Milestone!</a>		
+			<a href="#" class="linkButton">Add Milestone!</a>
 		</div>
 			<table class="medium-7 medium-offset-1 end columns calendar">
 				<thead>
@@ -20,7 +20,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Su</td>	
+						<td>Su</td>
 						<td>Mo</td>
 						<td>Tu</td>
 						<td>We</td>
@@ -62,7 +62,7 @@
 						<td>24</td>
 						<td>25</td>
 						<td>26</td>
-						<td>27</td>						
+						<td>27</td>
 					</tr>
 					<tr>
 						<td>28</td>
@@ -71,9 +71,20 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td></td>						
-					</tr>					
+						<td></td>
+					</tr>
 				</tbody>
 			</table>
-	</div>
+			<div id="calDetails" class="reveal-modal" data-reveal  aria-hidden="true" role="dialog">
+				<div class="detailsPanel">
+					<h1>June 9th</h1>
+					<p class="milestone">Your <a href="details/">Strawberry</a> sprouts soon!</p>
+					<img src="{{asset('_images/plant_images/strawberry_sprout.jpg')}}" alt="Strawberry Sprout" />
+					<p class="details">
+						{{ DB::table('plant_info')->where('plant_id', 4)->pluck('plant_prep')}}
+					</p>
+				</div>
+			  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+			</div>
+	</div><!-- End Calendar Row -->
 @stop

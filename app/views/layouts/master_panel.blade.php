@@ -14,7 +14,7 @@
 	    	@include('includes.nav_secondary')
 		    </nav>
     </div>
-    <div class="row">
+    <div class="row panel">
             @yield('content')
     </div>
     <div class="row">

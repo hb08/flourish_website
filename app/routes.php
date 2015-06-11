@@ -1,4 +1,5 @@
 <?php
+use App\Plants;
 /* Main Page */
 Route::get('/', function(){return View::make('hello'); });
 Route::get('home',function(){ return View::make('hello'); });
@@ -12,6 +13,14 @@ Route::get('/calendar',function(){
 });
 /* Overview */
 Route::get('/overview', array('uses'=>'OverviewController@getTotals'));
+/* Overview Panels */
+Route::get('/gp/{page}', array('uses'=>'OverviewController@showPanel'));
+
+/* Get Specific Plant */
+Route::get('/gp/view/{page}/{plant}', function($page, $plant){
+	Session::put('thisPlant', $plant);
+	return Redirect::action('OverviewController@showPanel', array('page' => $page));
+});
 
 Route::get('/plot', function()
 {
@@ -32,11 +41,3 @@ Route::get('/login', array('uses' => 'HomeController@showLogin'));
 Route::post('/login', array('uses' => 'HomeController@doLogin'));
 /* Logout */
 Route::get('/logout', array('uses' => 'HomeController@doLogout'));
-
-
-
-
-
-
-
-

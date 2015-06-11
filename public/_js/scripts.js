@@ -12,11 +12,4 @@ $(document).ready(function(){
 		pauseOnDotsHover: false,
 		speed: 500
 	});	
-/* Account Dropdown */
-	$(".account").hover(
-		function(){
-			$(".dd").css("display", "block");
-		}, function(){
-			$(".dd").css("display", "none");
-	});
 });
