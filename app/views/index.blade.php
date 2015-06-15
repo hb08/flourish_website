@@ -3,38 +3,38 @@
 <div class="row">
 	<div class="medium-6 columns slides">
 		<div>
-			<img src="{{ asset('_images/image_slider/slider_1_strawberry.jpg') }}" />
+			<img src="{{ asset('_images/image_slider/slider_1_strawberry.jpg') }}" alt="Strawberries | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
 				<p class="medium-9 columns">
 					<b>Sweet Summer Strawberries</b>
 					can be yours. Easy to care for, and even easier to propogate, start preparing your garden today to reap the rewards for years to come!
 				</p>
 				<a href="details/3" class="medium-3 columns linkButton">
-					See More +	
+					See More +
 				</a>
 			</div>
 		</div>
 		<div>
-			<img src="{{ asset('_images/image_slider/slider_2_broccoli.jpg') }}" />
+			<img src="{{ asset('_images/image_slider/slider_2_broccoli.jpg') }}" alt="Broccoli | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
 				<p class="medium-9 columns">
 					<b>Nothing Beats Broccoli</b>
 					when it comes to a great source of vitamins you can grow in your own backyard. Garden your way to better health today.
 				</p>
 				<a href="details/4" class="medium-3 columns linkButton">
-					See More +	
+					See More +
 				</a>
 			</div>
 		</div>
 		<div>
-			<img src="{{ asset('_images/image_slider/slider_3_peppers.jpg') }}" />
+			<img src="{{ asset('_images/image_slider/slider_3_peppers.jpg') }}" alt="Bell Peppers | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
 				<p class="medium-9 columns">
 					<b>Here a Pepper</b>
 					there a pepper, everywhere in Florida grow a pepper. Add a variety of color and flavors to your garden with Bell Peppers.
 				</p>
 				<a href="#" class="medium-3 columns linkButton">
-					See More +	
+					See More +
 				</a>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 	<div class="welcome medium-5 columns medium-offset-1 ">
 		<h1>Welcome to Flourish!</h1>
 		<p>
-			The Sunshite State is the perfect place to grow your very own fruits and vegetables. Finding information on gardening in a state with mild winters can be incredibily defficult, but Flourish is here, to provide you all you need to know to get started on your very own edible garden. 
+			The Sunshite State is the perfect place to grow your very own fruits and vegetables. Finding information on gardening in a state with mild winters can be incredibily defficult, but Flourish is here, to provide you all you need to know to get started on your very own edible garden.
 		</p>
 		<ul>
 			<li><a href="search">Search</a> for plants in your zip code.</li>
@@ -60,7 +60,7 @@
 				<p>Search for the plants you want to grow by zip code. Filter the results by type, difficulty, or needs. View plant details to find out if it works for you.</p>
 			</a>
 		</div>
-	</div>	
+	</div>
 	<div class="medium-3 columns">
 		<div class="panel-grid">
 			<a href="plot">
@@ -87,4 +87,3 @@
 	</div>
 </div>
 @stop
-

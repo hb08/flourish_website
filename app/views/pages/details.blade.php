@@ -2,11 +2,11 @@
 @section('content')
 	<div class="row detailsChart">
 		<div class="detailsImg medium-3 columns medium-offset-2">
-			<img src="{{asset($img)}}" />
-		</div>	
+			<img src="{{asset($img)}}" alt="{{$chart->plant_name}}| Flourish – Your Florida Gardening Guide"/>
+		</div>
 		<div class="charts medium-7  columns end">
 			<div class="row">
-				<h1>{{$chart->plant_name}}</h1>				
+				<h1>{{$chart->plant_name}}</h1>
 			</div>
 			<div class="tech row">
 				<p class="medium-4 columns">{{$chart->bot_name}}</p>
@@ -17,7 +17,7 @@
 				<div class="medium-5 columns">
 					<p><span class="spaced">Sun:</span>{{ $chart->sun_need}}</p>
 					<p><span class="spaced">Season:</span>{{ $chart->season_name}}</p>
-					<p><span class="spaced">Soil:</span>{{ $chart->soil_need}}</p>	
+					<p><span class="spaced">Soil:</span>{{ $chart->soil_need}}</p>
 				</div>
 				<div class="medium-7 columns bottom">
 					<p><span class="spaced">Water:</span>{{ $chart->water_need}}</p>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<div class="row">
 		<div class="medium-2 columns toc">
 			<ul>
@@ -37,7 +37,7 @@
 			</ul>
 		</div>
 		<div class="medium-9 columns copyText">
-			<h3 id="description">Plant Description</h3>	
+			<h3 id="description">Plant Description</h3>
 			<p>{{$info->plant_descrip}}</p>
 			<hr>
 			<h3 id="prep">Preperation</h3></h2>

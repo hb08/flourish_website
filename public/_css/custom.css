@@ -2,29 +2,23 @@
 
 html, button, input, select, textarea, body, .pure-g [class *="pure-u"] {
   font-family: Comfortaa, sans-serif;
-}
+} 
 
 html {
   background: #ceffbf;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #ceffbf), color-stop(24%, #efffea), color-stop(100%, #ffffff));
   /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* IE10+ */
   background: linear-gradient(to bottom, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ceffbf', endColorstr='#ffffff', GradientType=0);
   /* IE6-9 */
   height: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   background: #70bg32;
   background-repeat: no-repeat;
@@ -73,16 +67,14 @@ a:hover {
 a.linkButton {
   background: #ffd47f;
   /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* FF3.6+ */
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(21%, #ffd47f), color-stop(100%, #f09120));
   /* Chrome,Safari4+ */
   background: -webkit-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* IE10+ */
+  background: -webkit-radial-gradient(center, ellipse, #ffd47f 21%, #f09120 100%);
   background: radial-gradient(ellipse at center, #ffd47f 21%, #f09120 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffd47f', endColorstr='#f09120', GradientType=1);
@@ -99,16 +91,14 @@ a.linkButton {
 a.linkButton:hover {
   background: #ffd47f;
   /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* FF3.6+ */
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(21%, #ffd47f), color-stop(100%, #e75c24));
   /* Chrome,Safari4+ */
   background: -webkit-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* IE10+ */
+  background: -webkit-radial-gradient(center, ellipse, #ffd47f 21%, #e75c24 100%);
   background: radial-gradient(ellipse at center, #ffd47f 21%, #e75c24 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffd47f', endColorstr='#e75c24', GradientType=1);
@@ -769,24 +759,18 @@ html, button, input, select, textarea, body, .pure-g [class *="pure-u"] {
 html {
   background: #ceffbf;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, #ceffbf), color-stop(24%, #efffea), color-stop(100%, #ffffff));
   /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* IE10+ */
   background: linear-gradient(to bottom, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ceffbf', endColorstr='#ffffff', GradientType=0);
   /* IE6-9 */
   height: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   background: #70bg32;
   background-repeat: no-repeat;
@@ -835,16 +819,14 @@ a:hover {
 a.linkButton {
   background: #ffd47f;
   /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* FF3.6+ */
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(21%, #ffd47f), color-stop(100%, #f09120));
   /* Chrome,Safari4+ */
   background: -webkit-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #ffd47f 21%, #f09120 100%);
   /* IE10+ */
+  background: -webkit-radial-gradient(center, ellipse, #ffd47f 21%, #f09120 100%);
   background: radial-gradient(ellipse at center, #ffd47f 21%, #f09120 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffd47f', endColorstr='#f09120', GradientType=1);
@@ -861,16 +843,14 @@ a.linkButton {
 a.linkButton:hover {
   background: #ffd47f;
   /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* FF3.6+ */
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(21%, #ffd47f), color-stop(100%, #e75c24));
   /* Chrome,Safari4+ */
   background: -webkit-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #ffd47f 21%, #e75c24 100%);
   /* IE10+ */
+  background: -webkit-radial-gradient(center, ellipse, #ffd47f 21%, #e75c24 100%);
   background: radial-gradient(ellipse at center, #ffd47f 21%, #e75c24 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffd47f', endColorstr='#e75c24', GradientType=1);

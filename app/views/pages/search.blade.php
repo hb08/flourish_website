@@ -82,7 +82,7 @@
 			<?php $counter += 1; ?>
 		@endif
   		<div class="plantImg medium-3 columns">
-			<img src="{{ asset(Plants::getAddress($plant->plant_name, 'main')) }}" alt="{{ $plant->plant_name }}" />
+			<img src="{{ asset(Plants::getAddress($plant->plant_name, 'main')) }}" alt="{{ $plant->plant_name }}| Flourish – Your Florida Gardening Guide" />
   		</div>
 		<div class="plantListing medium-8 columns end">
 			<div class="row">

@@ -1,18 +1,27 @@
 <?php
 use App\Plants;
-/* Main Page */
-Route::get('/', function(){return View::make('hello'); });
-Route::get('home',function(){ return View::make('hello'); });
+/* Home Page */
+Route::get('/', function(){
+	return View::make('index')->with('title' , 'Flourish – Your Florida Gardening Guide');
+});
+Route::get('home',function(){
+	return View::make('index')->with('title' , 'Flourish – Your Florida Gardening Guide');
+});
+
 /* Plant Directory */
 Route::get('/search', array('uses'=>'PlantController@getPlants'));
+
 /* Plant Details */
 Route::get('/details/{id}', array('uses' =>'PlantController@plantDetails'));
+
 /* Calendar */
 Route::get('/calendar',function(){
-	return View::make('pages.calendar');
+	return View::make('pages.calendar')->with('title' , 'My Garden Calendar | Flourish – Your Florida Gardening Guide');
 });
+
 /* Overview */
 Route::get('/overview', array('uses'=>'OverviewController@getTotals'));
+
 /* Overview Panels */
 Route::get('/gp/{page}', array('uses'=>'OverviewController@showPanel'));
 

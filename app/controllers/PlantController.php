@@ -1,11 +1,13 @@
 <?php
 class PlantController extends BaseController {
 
-	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
+/**
+ * Setup the layout used by the controller.
+ *
+ * @return void
+ */
+
+/* Plant List */
 	public function getPlants()
 	{
 		/* Select All in Database - Default for no entered zip */
@@ -31,8 +33,10 @@ class PlantController extends BaseController {
 			'water' => DB::table('pi_water')->get()
 		);
 		/* Return it all in a view */
-		return View::make('pages.search', array('plants' => $plantList, 'count' => $count, 'filter' => $filter ));
+		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'count' => $count, 'filter' => $filter ));
 	}
+
+/* Plant Details */
 	public function plantDetails($plantId){
 		/* Get Data for Specific Plant Chart */
 		$plantChart =  DB::select('
@@ -64,7 +68,7 @@ class PlantController extends BaseController {
 		$image_location = '_images/plant_images/' . $image_name . '_main.jpg';
 
 		/* Return view with variables needed */
-		return View::make('pages.details', array('chart' => $plantChart["0"], 'imgSrc' => $altImageSrc["0"], 'info' => $plantInfo["0"], 'img' => $image_location, 'diff' => $plant_diff));
+		return View::make('pages.details', array('title' => ($plantChart["0"]->plant_name . ' | Flourish – Your Florida Gardening Guide'), 'chart' => $plantChart["0"], 'imgSrc' => $altImageSrc["0"], 'info' => $plantInfo["0"], 'img' => $image_location, 'diff' => $plant_diff));
 
 	}
 }

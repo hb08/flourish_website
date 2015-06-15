@@ -6,7 +6,7 @@ class OverviewController extends BaseController {
 	{
 		/* Get totals for plant (ALL FOR NOW) */
 
-		return View::make('overview');
+		return View::make('overview')->with('title' , 'Garden Overview | Flourish – Your Florida Gardening Guide');
 	}
 
 /* Panels */
@@ -54,14 +54,18 @@ class OverviewController extends BaseController {
 			if($page == 'growing'){
 				/* Plant info */
 				$info = DB::table('plant_info')->where('plant_id', $thisPlant)->pluck('plant_descrip');
+				$title = "My Plants Growing | Flourish – Your Florida Gardening Guide";
 			}elseif($page == 'waiting'){
 				/* Plant info */
 				$info = DB::table('plant_info')->where('plant_id', $thisPlant)->pluck('plant_prep');
+				$title = "My Plants Waiting | Flourish – Your Florida Gardening Guide";
 			}
 			/* Return Panel View */
-			return View::make('pages.gp.'. $page, array('plants' => $plantList, 'thisPlant' => $thisPlant, 'chart' => $plantChart['0'] , 'info' => $info ));
-		}elseif($page == 'list'){
+			return View::make('pages.gp.'. $page, array('title' => $title, 'plants' => $plantList, 'thisPlant' => $thisPlant, 'chart' => $plantChart['0'] , 'info' => $info ));
+
 		/* Plants List */
+		}elseif($page == 'list'){
+
 			/* Find list number */
 			$thisList = DB::table('user_lists')->where('user_listname', 'My List')->where('user_id', $userId)->pluck('list_id');
 			/* Get list of plants from DB */
@@ -80,7 +84,7 @@ class OverviewController extends BaseController {
 
 				/* Count list elements */
 				$count = count($userPlants);
-			return View::make('pages.gp.' . $page, array('lists' => $userPlants, 'count' => $count));
+			return View::make('pages.gp.' . $page, array('title' => 'My Plant List $title = My Plants Growing | Flourish – Your Florida Gardening Guide', 'lists' => $userPlants, 'count' => $count));
 		}
 
 	} /* End Show Panel */

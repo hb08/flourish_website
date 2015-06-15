@@ -79,7 +79,7 @@
 				<div class="detailsPanel">
 					<h1>June 9th</h1>
 					<p class="milestone">Your <a href="details/">Strawberry</a> sprouts soon!</p>
-					<img src="{{asset('_images/plant_images/strawberry_sprout.jpg')}}" alt="Strawberry Sprout" />
+					<img src="{{asset('_images/plant_images/strawberry_sprout.jpg')}}" alt="Strawberry Sprout| Flourish – Your Florida Gardening Guide" />
 					<p class="details">
 						{{ DB::table('plant_info')->where('plant_id', 4)->pluck('plant_prep')}}
 					</p>
