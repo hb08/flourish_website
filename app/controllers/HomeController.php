@@ -2,7 +2,7 @@
 
 class HomeController extends BaseController {
 
-/* Index Page */
+/* Register */
 
 	public function showRegister()
 	{
@@ -26,11 +26,13 @@ class HomeController extends BaseController {
 			return Redirect::route('/');
 		}
 	}
+
+/* Login */
 	public function showLogin()
 	{
 		return Redirect::to('/');
 	}
-
+/* Logging in */
 	public function doLogin()
 	{
 		$rules = array(
@@ -74,6 +76,7 @@ class HomeController extends BaseController {
 		}
 	}
 
+/* Logout */
 	public function doLogout()
 	{
 		Session::forget('ustatus');

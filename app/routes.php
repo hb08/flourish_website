@@ -31,15 +31,15 @@ Route::get('/gp/view/{page}/{plant}', function($page, $plant){
 	return Redirect::action('OverviewController@showPanel', array('page' => $page));
 });
 
-Route::get('/plot', function()
-{
-	return View::make('hello');
-});
+/* Garden Plotter */
+Route::get('/plot', array('uses' => 'PlotController@startPlotter'));
+/* New Garden */
+Route::post('/plot/new', array('uses' => 'PlotController@newPlot'));
 
-Route::get('/plan', function()
-{
-	return View::make('hello');
-});
+
+
+
+
 /* Show Registration */
 Route::get('/register', array('uses' => 'HomeController@showRegister'));
 /* Process Registration */

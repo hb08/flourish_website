@@ -1,12 +1,6 @@
 <?php
 class PlantController extends BaseController {
 
-/**
- * Setup the layout used by the controller.
- *
- * @return void
- */
-
 /* Plant List */
 	public function getPlants()
 	{
