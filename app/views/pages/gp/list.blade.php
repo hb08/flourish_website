@@ -36,12 +36,12 @@
 					<div class="row plantChart">
 						<div class="medium-5 columns">
 							<p><span>Sun:</span>{{ $list->sun_need}}</p>
-							<p><span>Season:</span> {{ $list->season_name}}</p>
-							<p><span>Soil:</span> {{ $list->soil_need}}</p>
+							<p><span>Season:</span>{{ $list->season_name}}</p>
+							<p><span>Soil:</span>{{ $list->soil_need}}</p>
 						</div>
-						<div class="medium-7 columns bottom">
-							<p><span>Water:</span> {{ $list->water_need}}</p>
-							<p><span>Harvest Time:</span> {{ $list->harvest_time }}</p>
+						<div class="medium-7 columns bottom rightCol">
+							<p><span>Water:</span>{{ $list->water_need}}</p>
+							<p><span>Harvest Time:</span>{{ $list->harvest_time }}</p>
 						</div>
 					</div>
 				</div>

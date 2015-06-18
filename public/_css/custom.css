@@ -15,6 +15,7 @@
     Panel Content
     Sidebar
     Plant List
+    Gardens Plotted
   Garden Plotter
 
 
@@ -168,7 +169,7 @@
   border-color: #F09120;
 }
 
-.plantListing h1 {
+.plantListing h1, .listings .plantListing h1 {
   font-size: 1.3em;
   margin-top: 0;
   text-align: left;
@@ -215,26 +216,33 @@
 }
 
 .plantChart span, span.spaced {
+  display: inline-block;
   font-weight: 700;
+  font-size: 1.1em;
   margin-right: .5em;
+  width: 4em;
 }
 
 .plant:hover .plantChart span {
   color: #E75C24;
 }
-
 .plantChart p {
-  font-size: .93em;
+  font-size: .8em;
 }
 
 .bottom {
+  padding-top: 1.4em;
+}
+.listings > .plant .bottom {
   padding-top: 1em;
 }
-
 .plantChart {
   padding-top: .6em;
 }
-
+.rightCol span {
+  width: 7em;
+  display: inline-block;
+}
 
 /*							    *
  * 			DETAILS			*
@@ -595,7 +603,7 @@ a#nextMonth:hover {
 
 .panel-nav a {
   background-image: url('../_images/icons/go_tabs.png');
-  background-position: left -2px;
+  background-position: left 0;
   background-repeat: no-repeat;
   display: block;
   height: 50px;
@@ -606,38 +614,40 @@ a#nextMonth:hover {
 }
 /* Icon Positions */
 .panel-nav li.selected a {
-  background-position: left -54px;
+  background-position: left -55px;
 }
 .panel-nav li:hover a, .panel-nav li.selected:hover a {
-  background-position: -3px -109px;
+  background-position: 0 -110px;
 }
+
 .panel-nav .listed a {
-  background-position: -55px -2px;
+  background-position: -55px 0;
 }
 .panel-nav .listed:hover a, .panel-nav .listed.selected:hover a {
-  background-position: -57px -108px;
+  background-position: -55px -110px;
 }
 .panel-nav .listed.selected a {
-  background-position: -52px -53px;
+  background-position: -55px -55px;
 }
+
 .panel-nav .gardens a {
-  background-position: -111px -2px;
+  background-position: -110px 0;
 }
-.panel-nav .gardens.selected, .panel-nav .gardens.selected:hover a{
-  background-position: -113px -54px
+.panel-nav .gardens.selected a {
+  background-position: -110px -55px;
 }
-.panel-nav .gardens:hover a {
-  background-position: -113px -108px;
+.panel-nav .gardens:hover a, .panel-nav .gardens.selected:hover a {
+  background-position: -110px -110px;
 }
 
 .panel-nav .waiting a {
-  background-position: -169px -2px;
+  background-position: -169px 0;
 }
 .panel-nav .waiting:hover a, .panel-nav .waiting.selected:hover a {
-  background-position: -171px -108px;
+  background-position: -167px -110px;
 }
 .panel-nav .waiting.selected a {
-  background-position: -169px -54px;
+  background-position: -167px -55px;
 }
 
 /* Panel Content */
@@ -790,9 +800,55 @@ a#nextMonth:hover {
   line-height: 1.2em
 }
 
+/* Gardens Plotted */
+.row.links {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+table#garden_plants {
+  border: none;
+  width: 100%;
+}
+#garden_plants th {
+  font-size: 1.2em;
+}
+table#garden_plants tr.even, table#garden_plants tr.alt, table#garden_plants tr:nth-of-type(even){
+  background-color: transparent;
+}
+#garden_plants td {
+  font-size: 1em;
+}
+table#garden_plants {
+  border: none;
+  width: 100%;
+  overflow-y: scroll;
+  height: 33em;
+  display: block;
+}
+
 /*						        	        *
  * 		   Garden Plotter			    *
  * 							                */
+
+#shapes #square, #shapes #rectangle, #shapes #circle {
+  cursor: pointer;
+  display: block;
+  background-color: #D3E7CD;
+  border: 2px solid #0F552E;
+  margin-bottom: 2em;
+  width: 6em;
+  height: 6em;
+}
+div#square {
+  margin-top: 5em;
+}
+#shapes #rectangle {
+  width: 12em;
+}
+div#circle {
+  border-radius: 50%;
+}
+
  canvas#gardenCanvas {
    border: 2px solid #0F552E;
  }

@@ -95,12 +95,12 @@
 			<div class="row plantChart">
 				<div class="medium-5 columns">
 					<p><span>Sun:</span>{{ $plant->sun_need}}</p>
-					<p><span>Season:</span> {{ $plant->season_name}}</p>
-					<p><span>Soil:</span> {{ $plant->soil_need}}</p>
+					<p><span>Season:</span>{{ $plant->season_name}}</p>
+					<p><span>Soil:</span>{{ $plant->soil_need}}</p>
 				</div>
-				<div class="medium-7 columns bottom">
-					<p><span>Water:</span> {{ $plant->water_need}}</p>
-					<p><span>Harvest Time:</span> {{ $plant->harvest_time }}</p>
+				<div class="medium-7 columns bottom rightCol">
+					<p><span>Water:</span>{{ $plant->water_need}}</p>
+					<p><span>Harvest Time:</span>{{ $plant->harvest_time }}</p>
 				</div>
 			</div>
 		</div>

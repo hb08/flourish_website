@@ -84,7 +84,11 @@ class OverviewController extends BaseController {
 
 				/* Count list elements */
 				$count = count($userPlants);
-			return View::make('pages.gp.' . $page, array('title' => 'My Plant List $title = My Plants Growing | Flourish – Your Florida Gardening Guide', 'lists' => $userPlants, 'count' => $count));
+			return View::make('pages.gp.' . $page, array('title' => 'My Plants Growing | Flourish – Your Florida Gardening Guide', 'lists' => $userPlants, 'count' => $count));
+
+		/* Gardens */
+		}elseif($page == 'gardens'){
+			return View::make('pages.gp.' . $page, array('title' => 'My Gardens | Flourish – Your Florida Gardening Guide '));
 		}
 
 	} /* End Show Panel */

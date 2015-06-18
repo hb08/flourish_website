@@ -46,6 +46,23 @@ input {
   padding-right: .4em;
 }
 
+select {
+  font-size: 0.9em;
+  border: 2px solid #304B22;
+  border-radius: 3px;
+  padding-top: 5%;
+}
+select:hover {
+  background-color: #FFFFFF;
+  border-color: #92C13E;
+}
+select:focus {
+  outline-color: #5D9C43;
+}
+.choice select { /* Plot New */
+  font-size: 1em;
+  padding-top: 1%;
+}
 
 /*							    *
  * 			SEARCH			*
@@ -102,22 +119,6 @@ input {
   background-image: url('../_images/icons/search_hov.png');
   border: none;
   box-shadow: none;
-}
-
-.searchForm select {
-  font-size: 0.9em;
-  border: 2px solid #304B22;
-  border-radius: 3px;
-  padding-top: 5%;
-}
-
-.searchForm select:hover {
-  background-color: #FFFFFF;
-  border-color: #92C13E;
-}
-
-.searchForm select:focus {
-  outline-color: #5D9C43;
 }
 
 .searchForm input {
