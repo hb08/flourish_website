@@ -3,6 +3,8 @@
     Image Slider
     Welcome
     Panel Grid
+  Panel - User/Account
+    Lists
   Search Results
   Search Details
     TOC
@@ -142,7 +144,42 @@
   background-position-x: -118px;
 }
 
+/*							            *
+ * 			PANEL - USER  			*
+ * 							            */
+.panel.reveal-modal .panel-content .medium-6:last-of-type {
+  border-left: 3px solid rgba(15, 85, 46, 0.06);
+}
+.panel.reveal-modal {
+  background-color: #0F552E;
+  color: #333;
+  border-color: transparent;
+  box-shadow: 0 0 5px 0 #0F552E;
+  margin-top: 5.6em;
+  border-radius: 5px;
+  height: 26em;
+}
+.reveal-modal-bg {
+  background: #000;
+  background: rgba(0,0,0,0.45);
+  bottom: -10em;
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 11.7em;
+  z-index: 1;
+  left: 0;
+}
 
+/* Account Lists */
+ul.accountLists {
+  list-style-type: none;
+  text-align: left;
+}
+.accountLists li {
+  font-size: 1.2 em;
+}
 
 /*							            *
  * 			SEARCH RESULTS			*
@@ -430,10 +467,7 @@ a#nextMonth:hover {
   background-repeat: no-repeat;
   background-position: center center;
 }
-/*    Milestone Details  */
-.reveal-modal-bg {
-  background: transparent;
-}
+/*    Milestone Details */
 .reveal-modal {
   left: 0;
   margin: 0 auto;

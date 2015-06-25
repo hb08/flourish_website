@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -6,16 +7,16 @@
 <body>
     <div class="row">
        <header>
-            @include('includes.header')
+        @include('includes.header')
        </header>
     </div>
     <div class="row">
 	    <nav>
 	    	@include('includes.nav_secondary')
-		    </nav>
+		  </nav>
     </div>
     <div class="row panel">
-            @yield('content')
+        @yield('content')
     </div>
     <div class="row">
     		 @include('includes.footer')

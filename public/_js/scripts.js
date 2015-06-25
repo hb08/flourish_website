@@ -1,4 +1,14 @@
 $(document).ready(function(){
+	// Force Panel Open
+	$forceOpen = document.getElementById('userAttempt');
+	if($forceOpen != null){
+		$('#loginPanel').foundation('reveal', 'open');
+		$forceOpen = null;
+		$("#errorP").prepend('You must be a registered user to access this content!');
+	}
+
+
+	// Slider
 	$('.left').click(function(e){
 		$('.slides').slickNext();
 	});
@@ -11,5 +21,5 @@ $(document).ready(function(){
 		dotsClass: 'slick-dots',
 		pauseOnDotsHover: false,
 		speed: 500
-	});	
+	})
 });

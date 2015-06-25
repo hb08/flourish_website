@@ -3,34 +3,40 @@
 class HomeController extends BaseController {
 
 /* Register */
-
-	public function showRegister()
-	{
-		return View::make('register')->with('title' , 'Register With Flourish – Your Florida Gardening Guide');
-	}
 	public function doRegister()
 	{
-
+		// Input to Variables
 		$user_name = Input::get('user_name');
 		$password = Hash::make(Input::get('password')); // Has Password immediately
-
-
 		$email = Input::get('email');
 		$zip_code = Input::get('zip_code');
 
-		$name_search = DB::select('SELECT * FROM users WHERE user_name = ?', array($user_name) );
-		if($user_name != $name_search){
+		// Search for username
+		$name_search = DB::table('users')->where('user_name', $user_name)->pluck('user_id');
+		// If there is no such user already
+		if(is_null($name_search)){
+			// Add to account
 			DB::insert('INSERT INTO users(user_name, password, email, zip_code) VALUES( ?, ?, ?, ?)', array($user_name, $password, $email, $zip_code));
-			return Redirect::to('/');
+			$uid = DB::table('users')->where('user_name', $user_name)->pluck('user_id');
+			$userZip = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
+			// Add User Id and Zip to SESSION USER
+			Session::put('user', $uid);
+			Session::put('zip', $userZip);
+			// Create Mandatory Plant Lists
+			DB::table('user_lists')->insert(array(
+				array('user_id' => $uid, 'user_listname' => 'Growing'),
+				array('user_id' => $uid, 'user_listname' => 'Waiting'),
+				array('user_id' => $uid, 'user_listname' => 'My List'),
+			));
+			// Return to Previous Page
+			return Redirect::back();
+		// If there is a user with this name already
 		}else{
-			return Redirect::route('/');
+			// Return with message
+			$msg = $user_name . " is a user already. Please try logging in with that name, or registering a new one.";
+			return Redirect::back()->with('errorMsg', $msg);
 		}
-	}
-
-/* Login */
-	public function showLogin()
-	{
-		return Redirect::to('/');
+		var_dump( $name_search);
 	}
 /* Logging in */
 	public function doLogin()
@@ -49,37 +55,41 @@ class HomeController extends BaseController {
 		        ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 		} else {
 
-		    // create our user data for the authentication
-		    $userdata = array(
-		        'user_name'     => Input::get('user_name'),
-		        'password'		=> Input::get('password')
-		    );
-			$check = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('password');
-		    // attempt to do the login
-		    if ($check)
+			// create our user data for the authentication
+			$userdata = array(
+					'user_name'     => Input::get('user_name'),
+					'password'		=> Input::get('password')
+			);
+		$check = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('password');
+			// attempt to do the login
+			if ($check)
+		{
+			if( Hash::check($userdata['password'], $check))
 			{
-				if( Hash::check($userdata['password'], $check))
-				{
-					Session::put('ustatus', 1);
-		        	return Redirect::to('/');
-				}
-				return Redirect::to('register');
-		    } else {
-		        // validation not successful, send back to form
-		        echo "Didn't work.\n";
-		        echo Input::get('user_name');
-		        echo "\n";
-		        echo Hash::make(Input::get('password'));
-
-		    }
-
-		}
+				// Add User Status, Id, and Zip to SESSION USER
+				$uid = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('user_id');
+				$userZip = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
+				Session::put('ustatus', 1);
+				Session::put('user', $uid);
+				Session::put('zip', $userZip);
+						return Redirect::to('/');
+			}
+			return Redirect::to('register');
+			} else {
+					// validation not successful, send back to form
+					echo "Didn't work.\n";
+					echo Input::get('user_name');
+					echo "\n";
+					echo Hash::make(Input::get('password'));
+			}
 	}
+}
 
 /* Logout */
 	public function doLogout()
 	{
-		Session::forget('ustatus');
+		Session::flush();
+		Auth::logout();
 		return Redirect::to('/');
 	}
 }

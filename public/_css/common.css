@@ -83,7 +83,7 @@ a:hover {
   color: #E75C24;
 }
 
-a.linkButton, .panel_plot input[type="submit"] {
+a.linkButton, .panel_plot input[type="submit"], .panel.reveal-modal input[type="submit"] {
   background: #ffd47f;
   /* Old browsers */
   /* FF3.6+ */
@@ -107,7 +107,7 @@ a.linkButton, .panel_plot input[type="submit"] {
   top: .5em;
 }
 
-a.linkButton:hover, .panel_plot input[type="submit"]:hover {
+a.linkButton:hover, .panel_plot input[type="submit"]:hover, ..panel.reveal-modal input[type="submit"]:hover {
   background: #ffd47f;
   /* Old browsers */
   /* FF3.6+ */
@@ -127,6 +127,11 @@ footer p {
   font-size: .8em;
   margin-bottom: 0;
   line-height: 1.1em;
+}
+p#errorP {
+  color: red;
+  padding: .3em;
+  margin-bottom: 0;
 }
 
 /*							    *
@@ -244,7 +249,7 @@ ul.dropdown {
   display: block;
   position: absolute;
   right: -9999em;
-  bottom: -75px;
+  bottom: -66px;
   z-index: 2;
 }
 
@@ -260,4 +265,11 @@ ul.dropdown {
 
 .dd li:nth-child(1n+2) {
   border-top: 1px solid #5B9942;
+}
+
+.dd #login {
+  position: absolute;
+    bottom: 2em;
+    right: 0em;
+  padding: .8em 2em;
 }

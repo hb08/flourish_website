@@ -8,6 +8,7 @@
       <div class="medium-3 columns choice"> <!-- Plant/Shape Selection -->
         <p>Select a plant from the drop down box, then click on a shape.</p>
         <select class="medium-12 columns" onchange="selectFunc(this.value)">
+          <option value="">Select a Plant</option>
           @foreach($plants as $p)
             <option value={{$p}}>{{$p}}</option>
           @endforeach
@@ -31,7 +32,7 @@
           text = val;
         }
         function shapeFunc(shape){
-          alert(text + ' added in a ' + shape );
+          console.log(text + ' added in a ' + shape );
         }
         function setup() {
           // Grid Setup
@@ -70,13 +71,11 @@
              stroke(lineColor);
              line( i * cellSize, 0, i * cellSize, gh);
            }
-
            noLoop();
         }
         function draw(){
 
         }
-
 
         </script>
         </div>

@@ -25,7 +25,7 @@ p > input:first-of-type {
   margin-right: 10px;
 }
 
-input {
+input, .over input {
   border-color: #0D6132;
   border-style: solid;
   border-radius: 5px;
@@ -103,22 +103,21 @@ select:focus {
 .searchForm input[type="submit"].linkButton {
   background-color: transparent;
   background-image: url('../_images/icons/search.png');
+  background-position: 0 0;
   background-repeat: no-repeat;
   border: none;
   color: #094724;
   font-size: 1px;
-  height: 2.3125rem;
+  height: 2.1rem;
   margin-top: 0;
-  width: 2.3125rem;
+  width: 2.1rem;
   text-indent: -9999px;
   position: relative;
-  left: -4em;
+  left: -4em
 }
 
 .searchForm input[type="submit"].linkButton:hover {
-  background-image: url('../_images/icons/search_hov.png');
-  border: none;
-  box-shadow: none;
+  background-position: 0 -2.2rem;
 }
 
 .searchForm input {
@@ -149,29 +148,13 @@ select:focus {
 /*							   *
  * 			LOGIN			 *
  * 							   */
-
-.panel-g {
-  background-color: #0A4725;
-  border-radius: 15px;
-  box-shadow: 0 0 7px 2px #26420A;
-  margin-top: -1em;
-  padding: 2em 2em;
-}
-
-.panel-g .inlay {
-  background-color: #F5FFF3;
-  padding: 1em;
-  border-radius: 15px
-}
-
-p > input:first-of-type {
-  margin-right: 10px;
-}
-
-input {
+.panel.reveal-modal input {
   border-color: #0D6132;
   border-style: solid;
   border-radius: 5px;
   padding: 6px 5px;
   color: #0D1632;
+}
+.panel.reveal-modal input[type="submit"] {
+  margin-bottom: 1em;
 }

@@ -85,6 +85,7 @@
 					</p>
 				</div>
 			  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+				<div class="reveal-modal-bg" style="display: none"></div>
 			</div>
 	</div><!-- End Calendar Row -->
 @stop
