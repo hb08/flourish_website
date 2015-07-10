@@ -1,23 +1,11 @@
-<script>
-// Shape Variables
-  var shapeText;
-  var type;
-  var plants; // Hold Plant Lists
-  var shapes = []; // Hold all shapes
-  var shapeNum = 0; // Start at 0 and assign ID numbers to each shape
-  var currentShape; // Var to hold number of shape pressed
-// Grid Variables
-  var lineColor = 'rgba(9, 59, 13, 0.33)';
-  // Canvas Size
-  var gw = 700; // Chart Max Width ideal
-  var gh = 500; // Chart Max Height ideal
-  // Grid Setup
-  var gx; // Garden Cells Wide from user input
-  var gy; // Garden Cells High from user input
-  // Calculation Variables
-  var xlength;
-  var ylength;
-  var cellSize;
+var shapeText;
+var type;
+var cellSize;
+var xlength;
+var ylength;
+var shapes = []; // Hold all shapes
+var shapeNum = 0; // Start at 0 and assign ID numbers to each shape
+var currentShape; // Var to hold number of shape pressed
 
 // Get text from select box on change
 function selectFunc(val){
@@ -35,12 +23,7 @@ function shapeFunc(shape){
   if(shape == 'circle'){
     shapes.push( new Circle() );
   }
-  // Add to Plant List
-  if(plants == undefined){
-    plants = shapeText + ', ';
-  }else{
-    plants += shapeText + ', ';
-  }
+  type = false;
   redraw();
 }
 // Create Shape Superclass
@@ -62,6 +45,10 @@ var Shape = function(){
 };
 // Mouse Click Functions
 function mousePressed(){
+  var gx = getElement('width'); // Width of Garden from user
+  gx = gx.html();
+  var gy = getElement('height'); // Height of Garden from user
+  gy = gy.html();
   //If click within the canvas
   if( (mouseX > 0 && mouseX < cellSize * gx)  && (mouseY > 0 && mouseY < cellSize * gy)){
     // Check shapes to see if this is in one
@@ -73,63 +60,33 @@ function mousePressed(){
   }
 }
 function mouseUp(){
+  var changeX = mouseX;
+  var changeY = mouseY;
   for( var i = 0; i < shapes.length; i++ ){
     if(currentShape == shapes[i].idMe() ){
-      shapes[i].released();
+      shapes[i].released(changeX, changeY);
     }
   }
 }
+
 // Shape Prototype Methods
 Shape.prototype.pressed = function(){
   currentShape = this.id;
 };
-Shape.prototype.released = function(){
-  var changeX = mouseX;
-  var changeY = mouseY;
-  // Snap to grid
-    // If mouse position is not divisble by cellSize evenly,
-    if(changeX % cellSize != 0 ){
-      var test = Math.floor(changeX/cellSize); // Round that down
-      var testRes = cellSize * test; // Multiply by cellSize
-      changeX = testRes;
-    }
-    // If mouse position is not divisble by cellSize evenly,
-    if(changeY % cellSize != 0){
-      var test = Math.floor(changeY/cellSize); // Round that down
-      var testRes = cellSize * test; // Multiply by cellSize
-      changeY = testRes;
-    }
-
-  // Coordinates of Shape are the results
-  this.x = changeX;
-  this.y = changeY;
-  // Redraw everything
+Shape.prototype.released = function(changeX, changeY){
+  if(this.type == "circle"){
+    this.x = changeX;
+    this.y = changeY;
+  }else{
+    this.x = changeX;
+    this.y = changeY;
+  }
   redraw();
 };
 Shape.prototype.checkClick = function(){
-  if( ((mouseX > this.x) && (mouseX < (this.x + this.w))) && ((mouseY > this.y) && (mouseY < (this.y + this.h))) ){
+  if( ((mouseX > this.x) && (mouseX < (this.x + this.h))) && ((mouseY > this.y) && (mouseY < (this.y + this.w))) ){
     return true;
   }
-}
-Shape.prototype.showText = function(){
-  // Text Size
-  var fontSize = 10;
-  // Text Placement
-  var textX = this.x + 2;
-  var textY = this.y + fontSize;
-  // Text Display
-  textFont("Comfortaa");
-  textSize(fontSize);
-  textLeading(fontSize);
-  stroke('#000');
-  text(this.shapeText, textX, textY, this.w, this.h);
-  // Add to Hidden Input
-  shapeHold = getElement('holdShapes');
-  shapeText = JSON.stringify(shapes);
-  shapeHold.html(shapeText);
-  // Add Plants to Hidden Input
-  plantHold = getElement('holdPlants');
-  plantHold.html(plants);
 }
 // Create shape subclasses calling on Shape Superclass
 var Square = function(){
@@ -148,35 +105,42 @@ Rectangle.prototype = Object.create(Shape.prototype);
 Circle.prototype = Object.create(Shape.prototype);
 // Set Each shape Display
 Square.prototype.display = function(){
-  rect(this.x, this.y, this.w, this.h);
+  rect(this.x, this.y, this.h, this.w);
 };
 Rectangle.prototype.display = function(){
   if(ylength/cellSize < 2){
-    this.w = cellSize * 2;
-    this.h = cellSize;
-    rect(this.x , this.y, this.w, this.h);
-  }else{
-    this.w = cellSize;
     this.h = cellSize * 2;
-    rect(this.x, this.y, this.w, this.h);
+    this.w = cellSize;
+    rect(this.x , this.y, this.h, this.w);
+  }else{
+    this.h = cellSize;
+    this.w = cellSize * 2;
+    rect(this.x, this.y, this.h, this.w);
   }
 };
 Circle.prototype.display = function() {
   this.h = cellSize;
   this.w = cellSize;
-  ellipse(this.x + (cellSize/2), this.y + (cellSize/2), this.w, this.h);
+  ellipse(this.x + (cellSize/2), this.y + (cellSize/2), this.h, this.w);
 };
 
+
+
 function setup() {
-  // Set Grid Variables
-  gx = getElement('width'); // Width of Garden from user
+  // Grid Setup
+  var lineColor = 'rgba(9, 59, 13, 0.33)';
+  var gx = getElement('width'); // Width of Garden from user
   gx = gx.html();
-  gy = getElement('height'); // Height of Garden from user
+  var gy = getElement('height'); // Height of Garden from user
   gy = gy.html();
+
+  // Canvas Size
+  var gw = 700; // Chart Max Width ideal
+  var gh = 500; // Chart Max Height ideal
+
   xlength = floor(gw/gx); // Width of Grid Square
   ylength = floor(gh/gy); // Height of Grid Square
 
-  // Adjust cellSize to user Input
   if(xlength <= ylength){
     cellSize = xlength;
   }else {
@@ -190,10 +154,28 @@ function setup() {
   cnv.mouseReleased(mouseUp);
   noLoop();
 }
-
 function draw(){
-// Add Grid Background
+    // Grid Setup
+    var lineColor = 'rgba(9, 59, 13, 0.33)';
+    var gx = getElement('width'); // Width of Garden from user
+    gx = gx.html();
+    var gy = getElement('height'); // Height of Garden from user
+    gy = gy.html();
+
+    // Canvas Size
+    var gw = 700; // Chart Max Width ideal
+    var gh = 500; // Chart Max Height ideal
+
+    xlength = floor(gw/gx); // Width of Grid Square
+    ylength = floor(gh/gy); // Height of Grid Square
+
+    if(xlength <= ylength){
+      cellSize = xlength;
+    }else {
+      cellSize = ylength;
+    }
     background('white');
+
     // Horizontal Lines
    for(i = 1; i < gx+1 ; i++ ){ // i is equal to 1, run loop until i = gx
      stroke(lineColor);
@@ -204,14 +186,14 @@ function draw(){
      stroke(lineColor);
      line( i * cellSize, 0, i * cellSize, gh);
    }
-// Add Shapes
+
   for( i = 0; i < shapes.length; i++ ){
     shape = shapes[i];
-    stroke('#7a7a7a');
-    fill('white');
+    stroke('black');
     shape.display();
-    shape.showText();
-  }
-}
 
-</script>
+  }
+  textSize(32);
+  text('Hello!', cellSize, cellSize);
+  fill(0, 102, 153);
+}

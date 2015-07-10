@@ -2,10 +2,10 @@
 @section('content')
 	<div class="row panel-nav">
 		<ul class="medium-6 columns medium-centered">
-			<li class="medium-3 columns"><a href="growing">Growing</a></li>
-			<li class="medium-3 columns listed selected"><a href="list">Listed</a></li>
-			<li class="medium-3 columns gardens"><a href="gardens">Gardens</a></li>
-			<li class="medium-3 columns waiting"><a href="waiting">Waiting</a></li>
+			<li class="medium-3 columns"><a href="growing"><span class="hideWords">Growing</span><span class="showNumbers">{{$totals['counts']['growing']}}</span></a></li>
+			<li class="medium-3 columns listed  selected"><a href="list"><span class="hideWords">Listed</span><span class="showNumbers">{{$totals['counts']['plants']}}</span></a></li>
+			<li class="medium-3 columns gardens"><a href="gardens"><span class="hideWords">Gardens</span><span class="showNumbers">{{$totals['counts']['plots']}}</span></a></li>
+			<li class="medium-3 columns waiting"><a href="waiting"><span class="hideWords">Waiting</span><span class="showNumbers">{{$totals['counts']['waiting']}}</span></a></li>
 		</ul>
 	</div>
 	<div class="row panel-content listings">
@@ -17,11 +17,13 @@
 				$list_diff = '_images/icons/difficulty/' . $list->diff_detail . '.png';
 	  	?>
 			@if($counter == $count) <!-- Check if this is the last item using counter -->
-				<a class="medium-6 columns plant end " href="../details/{{$list->id}}" >
+				<div class="medium-6 columns plant end " href="../details/{{$list->id}}" >
 	  	@else <!-- Otherewise don't add end class, but do add to counter -->
-				<a class="medium-6 columns plant" href="../details/{{$list->id}}" >
+				<div class="medium-6 columns plant" href="../details/{{$list->id}}" >
 					<?php $counter += 1; ?>
 			@endif
+					<a href="#"  class="ar remove plantRemove" data-reveal-id="listRemove" id="{{$list->id}}" name="{{$list->plant_name}}">Remove From List</a>
+					<a href="../details/{{$list->id}}" >
 		  		<div class="plantImg medium-3 columns">
 					<img src="{{ asset( Plants::getAddress($list->plant_name, 'main') ) }}" alt="{{ $list->plant_name}}" />
 		  		</div>
@@ -46,6 +48,8 @@
 					</div>
 				</div>
 			</a>
+		</div>
 		@endforeach
 	</div> <!-- End Panel Content -->
+	@include('includes/addRemovePanels')
 @stop

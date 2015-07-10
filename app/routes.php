@@ -46,9 +46,15 @@ Route::get('/gp/view/{page}/{plant}', function($page, $plant){
 Route::get('/plot', array('uses' => 'PlotController@startPlotter'));
 /* New Garden */
 Route::post('/plot/new', array('uses' => 'PlotController@newPlot'));
+Route::post('/saveGarden', array('uses' => 'PlotController@saveGarden'));
 /* Process Registration */
 Route::post('/register',array('uses' => 'HomeController@doRegister'));
 /* Process Login */
 Route::post('/login', array('uses' => 'HomeController@doLogin'));
 /* Logout */
 Route::get('/logout', array('uses' => 'HomeController@doLogout'));
+
+/* Remove Items */
+Route::post('/removeItem', array('uses' => 'PlantController@removePlant'));
+/* Add Items */
+Route::post('/addItem', array('uses' => 'PlantController@addPlant'));

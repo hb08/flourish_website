@@ -3,6 +3,15 @@
 	<div class="row detailsChart">
 		<div class="detailsImg medium-3 columns medium-offset-2">
 			<img src="{{asset($img)}}" alt="{{$chart->plant_name}}| Flourish – Your Florida Gardening Guide"/>
+			@if(User::checkPlant($chart->id))
+				<div class="medium-12 columns">
+					<a href="#" data-reveal-id="detailsRemove">Remove From Lists</a>
+				</div>
+			@elseif(Session::get('user'))
+				<div class="medium-12 columns">
+					<a href="#" class="add">Add To Lists</a>
+				</div>
+			@endif
 		</div>
 		<div class="charts medium-7  columns end">
 			<div class="row">
@@ -58,4 +67,5 @@
 			<hr>
 		</div>
 	</div>
+	@include('includes/addRemovePanels')
 @stop

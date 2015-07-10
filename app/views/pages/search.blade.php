@@ -119,36 +119,46 @@
 <div class="row">
 	<div class="row">
 	<!-- Add a counter -->
+	<script>
+		document.getElementbyId
+	</script>
 	<?php $counter = 1; ?>
 	@foreach($plants as $plant)
 	<?php
-		$plant_diff = '_images/icons/difficulty/' . $plant->diff_detail . '.png';
+			$plant_diff = '_images/icons/difficulty/' . $plant->diff_detail . '.png';
   	?>
-			<a class="medium-6 columns plant" href="details/{{$plant->id}}" >
-  		<div class="plantImg medium-3 columns">
-			<img src="{{ asset(Plants::getAddress($plant->plant_name, 'main')) }}" alt="{{ $plant->plant_name }}| Flourish – Your Florida Gardening Guide" />
-  		</div>
-		<div class="plantListing medium-8 columns end">
-			<div class="row">
-				<h1>{{ $plant->plant_name }}</h1>
-			</div>
-			<div class="row plantDetails">
-				<p class="medium-4 columns">{{ $plant->plant_type }}</p>
-				<p class="medium-8 columns difficulty">Difficulty: <img src="{{ asset($plant_diff) }}"</p>
-			</div>
-			<div class="row plantChart">
-				<div class="medium-5 columns">
-					<p><span>Sun:</span>{{ $plant->sun_need}}</p>
-					<p><span>Season:</span>{{ $plant->season_name}}</p>
-					<p><span>Soil:</span>{{ $plant->soil_need}}</p>
+			<div class="medium-6 columns plant" >
+				@if(User::checkPlant($plant->id))
+					<a href="#" class="ar remove plantRemove" data-reveal-id="searchRemove" id="{{$plant->id}}" name="{{$plant->plant_name}}">Remove Plant</a>
+				@else
+					<a href="#" class="ar add plantAdd" data-reveal-id="searchAdd" id="{{$plant->id}}" name="{{$plant->plant_name}}">Add Plant</a>
+				@endif
+				<a href="details/{{$plant->id}}">
+		  		<div class="plantImg medium-3 columns">
+					<img src="{{ asset(Plants::getAddress($plant->plant_name, 'main')) }}" alt="{{ $plant->plant_name }}| Flourish – Your Florida Gardening Guide" />
+		  		</div>
+				<div class="plantListing medium-8 columns end">
+					<div class="row">
+						<h1>{{ $plant->plant_name }}</h1>
+					</div>
+					<div class="row plantDetails">
+						<p class="medium-4 columns">{{ $plant->plant_type }}</p>
+						<p class="medium-8 columns difficulty">Difficulty: <img src="{{ asset($plant_diff) }}"</p>
+					</div>
+					<div class="row plantChart">
+						<div class="medium-5 columns">
+							<p><span>Sun:</span>{{ $plant->sun_need}}</p>
+							<p><span>Season:</span>{{ $plant->season_name}}</p>
+							<p><span>Soil:</span>{{ $plant->soil_need}}</p>
+						</div>
+						<div class="medium-7 columns bottom rightCol">
+							<p><span>Water:</span>{{ $plant->water_need}}</p>
+							<p><span>Harvest Time:</span>{{ $plant->harvest_time }}</p>
+						</div>
+					</div>
 				</div>
-				<div class="medium-7 columns bottom rightCol">
-					<p><span>Water:</span>{{ $plant->water_need}}</p>
-					<p><span>Harvest Time:</span>{{ $plant->harvest_time }}</p>
-				</div>
-			</div>
+			</a>
 		</div>
-	</a>
 			<!-- End row if Even -->
 			@if($counter %2 == 0)
 				</div>
@@ -163,7 +173,5 @@
 			<?php $counter += 1; ?>
 	@endforeach
 </div>
-
-
-
+@include('includes/addRemovePanels');
 @stop

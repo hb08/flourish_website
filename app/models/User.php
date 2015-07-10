@@ -35,4 +35,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		);
 		return $user;
 	}
+
+// Check if user has plant -- Search Directory
+	static public function checkPlant($pid){
+		$isListed = DB::table('user_plants')->where('user_id', Session::get('user'))->where('plant_id', $pid)->pluck('list_id');
+		if(!empty($isListed)){
+			return true;
+		}
+		return false;
+	}
+
+// Get lists for user -- Search
+	static public function userLists(){
+		$lists = DB::table('user_lists')->where('user_id', Session::get('user'))->lists('list_id', 'user_listname');
+		return $lists;
+	}
 }

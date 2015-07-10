@@ -33,7 +33,7 @@
 					<b>Here a Pepper</b>
 					there a pepper, everywhere in Florida grow a pepper. Add a variety of color and flavors to your garden with Bell Peppers.
 				</p>
-				<a href="#" class="medium-3 columns linkButton">
+				<a href="details/8" class="medium-3 columns linkButton">
 					See More +
 				</a>
 			</div>

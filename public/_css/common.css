@@ -59,8 +59,11 @@ body, .center {
 body {
   background-color: transparent;
   max-width: 1465px;
+  margin: 0 auto;
 }
-
+.hidden, input.hidden {
+  display: none;
+}
 .filler {
   display: block;
   height: 1em;
@@ -107,7 +110,7 @@ a.linkButton, .panel_plot input[type="submit"], .panel.reveal-modal input[type="
   top: .5em;
 }
 
-a.linkButton:hover, .panel_plot input[type="submit"]:hover, ..panel.reveal-modal input[type="submit"]:hover {
+a.linkButton:hover, .panel_plot input[type="submit"]:hover, .panel.reveal-modal input[type="submit"]:hover {
   background: #ffd47f;
   /* Old browsers */
   /* FF3.6+ */

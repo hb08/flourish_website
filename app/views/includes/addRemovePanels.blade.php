@@ -1,0 +1,76 @@
+@if($thisPanel == 'details')
+<div id="detailsRemove" class="panel reveal-modal slim" data-reveal aria-hidden="true" role="dialog">
+  <div class="row panel-content">
+    <h1>Remove Plant</h1>
+    <div class="medium-8 columns medium-offset-2">
+      {{ Form::open(array('url' => 'removeItem')) }}
+        <p class="medium-12 columns text-center">Are you sure you want to permanently delete </p>
+          <div class="medium-5 medium-centered columns">
+            <input class="hidden" type="text" name="plant" value="{{ $chart->id }}">
+            <input class="text-center" type="text" name="name" value="{{$chart->plant_name }}" >
+          </div>
+        <p class="medium-12 columns text-center">from your lists?</p>
+        <input type="submit" class="linkButton save_garden" value="Yes, Remove Plant!">
+      {{ Form::close() }}
+    </div>
+  </div><!-- End Content -->
+</div><!-- End saveDialog -->
+@elseif($thisPanel == 'search')
+<div id="searchRemove" class="panel reveal-modal slim" data-reveal aria-hidden="true" role="dialog">
+  <div class="row panel-content">
+    <h1>Remove Plant</h1>
+    <div class="medium-8 columns medium-offset-2">
+      {{ Form::open(array('url' => 'removeItem')) }}
+        <p class="medium-12 columns text-center">Are you sure you want to permanently delete </p>
+          <div class="medium-5 medium-centered columns">
+            <input class="hidden" type="text" name="plant" id="plantId">
+            <input class="text-center" type="text" name="name" id="plantName" >
+          </div>
+        <p class="medium-12 columns text-center">from your lists?</p>
+        <input type="submit" class="linkButton save_garden" value="Yes, Remove Plant!">
+      {{ Form::close() }}
+    </div>
+  </div><!-- End Content -->
+</div><!-- End saveDialog -->
+<div id="searchAdd" class="panel reveal-modal" data-reveal aria-hidden="true" role="dialog">
+  <div class="row panel-content">
+    <h1>Add Plant</h1>
+    <div class="medium-8 columns medium-offset-2">
+      {{ Form::open(array('url' => 'addItem')) }}
+        <p class="medium-12 columns text-center">Add</p>
+          <div class="medium-5 medium-centered columns">
+            <input class="hidden" type="text" name="plant" id="addPlant">
+            <input class="text-center" type="text" name="name" id="addName" >
+          </div>
+        <p class="medium-12 columns text-center">to</p>
+        @foreach(User::userLists() as $k => $v)
+        <div class="medium-4 columns checkSpace medium-collapse">
+          <input type="checkbox" name="addList[]" value="{{$v}}"><label>{{$k}}</label>
+        </div>
+        @endforeach
+        <input type="submit" class="linkButton save_garden" value="Add Plant!">
+      {{ Form::close() }}
+    </div>
+  </div><!-- End Content -->
+</div><!-- End saveDialog -->
+
+@else($thisPanel == 'list')
+<div id="listRemove" class="panel reveal-modal slim" data-reveal aria-hidden="true" role="dialog">
+  <div class="row panel-content">
+    <h1>Remove Plant</h1>
+    <div class="medium-8 columns medium-offset-2">
+      {{ Form::open(array('url' => 'removeItem')) }}
+        <p class="medium-12 columns text-center">Are you sure you want to permanently delete </p>
+          <div class="medium-5 medium-centered columns">
+            <input class="hidden" type="text" name="plant" id="plantId">
+            <input class="hidden" type="text" name="list" id="listId" value="{{$thisPanel}}">
+            <input class="text-center" type="text" name="name" id="plantName" >
+          </div>
+        <p class="medium-12 columns text-center">from your lists?</p>
+        <input type="submit" class="linkButton save_garden" value="Yes, Remove Plant!">
+      {{ Form::close() }}
+    </div>
+  </div><!-- End Content -->
+</div><!-- End saveDialog -->
+
+@endif

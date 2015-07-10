@@ -246,8 +246,9 @@ class PlantController extends BaseController {
 			'type' => DB::table('pi_type')->get(),
 			'water' => DB::table('pi_water')->get()
 		);
+
 		/* Return it all in a view */
-		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $zone, 'old' => $old));
+		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $zone, 'thisPanel' => 'search',  'old' => $old));
 	}
 /* Plant List */
 	public function getPlants()
@@ -358,7 +359,7 @@ class PlantController extends BaseController {
 			'water' => DB::table('pi_water')->get()
 		);
 		/* Return it all in a view */
-		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $zone ));
+		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'thisPanel' => 'search',  'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $zone ));
 	}
 
 /* Plant Details */
@@ -393,7 +394,38 @@ class PlantController extends BaseController {
 		$image_location = '_images/plant_images/' . $image_name . '_main.jpg';
 
 		/* Return view with variables needed */
-		return View::make('pages.details', array('title' => ($plantChart["0"]->plant_name . ' | Flourish – Your Florida Gardening Guide'), 'chart' => $plantChart["0"], 'imgSrc' => $altImageSrc["0"], 'info' => $plantInfo["0"], 'img' => $image_location, 'diff' => $plant_diff));
+		return View::make('pages.details', array('title' => ($plantChart["0"]->plant_name . ' | Flourish – Your Florida Gardening Guide'), 'chart' => $plantChart["0"],  'thisPanel' => 'details', 'imgSrc' => $altImageSrc["0"], 'info' => $plantInfo["0"], 'img' => $image_location, 'diff' => $plant_diff));
 
 	}
+
+/* Remove Plant */
+  public function removePlant(){
+    $pid = Input::get('plant');
+    if(!empty(Input::get('list'))){
+      $lid = Input::get('list');
+      DB::table('user_plants')->where('list_id', $lid)->where('plant_id', $pid)->delete();
+      return Redirect::to('/gp/list');
+    }
+    else{
+      DB::table('user_plants')->where('plant_id', $pid)->where('user_id', Session::get('user'))->delete();
+      return Redirect::to('/search');
+    }
+  }// End Remove Plant
+
+  /* Add Plant */
+  public function addPlant(){
+    $pid = Input::get('plant');
+    $lists = Input::get('addList');
+    foreach($lists as $l){
+      DB::table('user_plants')->insert(
+        array(
+          'user_id'=> Session::get('user'),
+          'plant_id'=> $pid,
+          'list_id' => $l
+          )
+      );
+    }
+    return Redirect::to('/search');
+  }
+
 }
