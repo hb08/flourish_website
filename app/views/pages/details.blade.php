@@ -9,7 +9,7 @@
 				</div>
 			@elseif(Session::get('user'))
 				<div class="medium-12 columns">
-					<a href="#" class="add">Add To Lists</a>
+					<a href="#" data-reveal-id="detailsAdd">Add To Lists</a>
 				</div>
 			@endif
 		</div>

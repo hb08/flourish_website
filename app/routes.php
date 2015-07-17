@@ -18,13 +18,8 @@ Route::post('/newSearch', array('uses'=>'PlantController@searchPlants'));
 Route::get('/details/{id}', array('uses' =>'PlantController@plantDetails'));
 
 /* Calendar */
-Route::get('/calendar', function(){
-	if(Session::get('ustatus') == 1){
-		return View::make('pages.calendar')->with('title' , 'My Garden Calendar | Flourish – Your Florida Gardening Guide');
-	}else{
-		return View::make('index')->with('title' , 'Flourish – Your Florida Gardening Guide')->with('userattempt', true);
-	}
-});
+Route::get('/calendar', array('uses' => 'CalcController@showMilestone'));
+Route::post('/addMilestone', array('uses' => 'CalcController@addMilestone'));
 
 /* Overview */
 Route::get('/overview', array('uses' => 'OverviewController@getTotals'));
@@ -47,6 +42,8 @@ Route::get('/plot', array('uses' => 'PlotController@startPlotter'));
 /* New Garden */
 Route::post('/plot/new', array('uses' => 'PlotController@newPlot'));
 Route::post('/saveGarden', array('uses' => 'PlotController@saveGarden'));
+/* Edit Garden */
+Route::get('/plot/edit/{id}', array('uses' => 'PlotController@editPlot'));
 /* Process Registration */
 Route::post('/register',array('uses' => 'HomeController@doRegister'));
 /* Process Login */

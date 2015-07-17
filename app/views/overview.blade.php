@@ -20,6 +20,9 @@
 		</div>
 	</div>
 	<div class="row gages">
+		<div class="medium-12 columns">
+			<h3 class="gageTitle">Totals From All Lists</h3>
+		</div>
 		<div class="medium-3 columns">
 			@if($totals)
 				<p id="water" class="hidden">@foreach($totals["water"] as $id => $need){{$id}},{{$need}}|@endforeach</p>

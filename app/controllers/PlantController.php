@@ -177,7 +177,7 @@ class PlantController extends BaseController {
 				$statement.= ' AND plant_list.water_id = ' . $water;
 			}
 		}
-		$zoneRange;
+		$zoneRange = array();
 		if(!empty($zip)){
 			// Add to array
 			$old['zip'] = $zip;
@@ -209,6 +209,7 @@ class PlantController extends BaseController {
 					$zoneRange = [ '8', '11', '12', '14', '19'];
 					break;
         case 'Florida':
+          $zoneRange = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
           break;
 			}
 			$counter = count($zoneRange);
@@ -251,28 +252,29 @@ class PlantController extends BaseController {
 		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $zone, 'thisPanel' => 'search',  'old' => $old));
 	}
 /* Plant List */
-	public function getPlants()
-	{
+	public function getPlants(){
 		$zip;
 		$plants;
 		$zone;
 
 		if(is_null(Session::get('zip'))){ /* Select All in Database - Default for no entered zip/ not logged in */
-			$plants = DB::select('
-				SELECT plant_list.plant_id as id, plant_name, pi_type.plant_type, bot_name, sun_need, soil_need, season_name, diff_detail, water_need, harvest_time  FROM plant_list
-				INNER JOIN pi_type ON plant_list.plant_type = pi_type.plant_type
-				INNER JOIN pi_sun ON plant_list.sun_id = pi_sun.sun_id
-				INNER JOIN pi_soil ON plant_list.soil_id = pi_soil.soil_id
-				INNER JOIN pi_season ON plant_list.season_id = pi_season.season_id
-				INNER JOIN pi_diff ON plant_list.diff_id = pi_diff.diff_id
-				INNER JOIN pi_water ON plant_list.water_id = pi_water.water_id;
-			');
+			$statement = '
+      SELECT plant_list.plant_id as id, plant_name, pi_type.plant_type, bot_name, sun_need, soil_need, season_name, diff_detail, water_need, harvest_time  FROM plant_list
+			INNER JOIN pi_type ON plant_list.plant_type = pi_type.type_id
+			INNER JOIN pi_sun ON plant_list.sun_id = pi_sun.sun_id
+			INNER JOIN pi_soil ON plant_list.soil_id = pi_soil.soil_id
+			INNER JOIN pi_season ON plant_list.season_id = pi_season.season_id
+			INNER JOIN pi_diff ON plant_list.diff_id = pi_diff.diff_id
+			INNER JOIN pi_water ON plant_list.water_id = pi_water.water_id
+			';
 			$zip = 'Florida';
-			$zone = '';
+			$hzone = '';
+      $plants = DB::select($statement);
 		}else{ /* If user is logged in, select all from zip */
 			$zip = Session::get('zip');
-			$zone = DB::table('zip_zone')->where('zipcode', $zip)->pluck('zone_number');
-			$zoneRange;
+			$zone_number = DB::table('zip_zone')->where('zipcode', $zip)->pluck('zone_number');
+      $hzone = DB::table('hzone')->where('zone_number', $zone_number)->pluck('hz_id');
+			$zoneRange = array();
       $statement = 'SELECT plant_list.plant_id as id, plant_name, pi_type.plant_type, bot_name, sun_need, soil_need, season_name, diff_detail, water_need, harvest_time  FROM plant_list
       INNER JOIN pi_type ON plant_list.plant_type = pi_type.type_id
       INNER JOIN pi_sun ON plant_list.sun_id = pi_sun.sun_id
@@ -280,9 +282,8 @@ class PlantController extends BaseController {
       INNER JOIN pi_season ON plant_list.season_id = pi_season.season_id
       INNER JOIN pi_diff ON plant_list.diff_id = pi_diff.diff_id
       INNER JOIN pi_water ON plant_list.water_id = pi_water.water_id';
-
 			// Ensure Zone is entire selection for Zip
-			switch($zone){
+			switch($hzone){
 				case '1':
 					$zoneRange = [ '1', '9', '12', '13', '15'];
 					break;
@@ -307,6 +308,18 @@ class PlantController extends BaseController {
 				case '8':
 					$zoneRange = [ '8', '11', '12', '14', '19'];
 					break;
+        case '15':
+          $zoneRange = [ '1', '2', '9', '12', '13', '15'];
+          break;
+        case '17':
+          $zoneRange = [ '3', '4', '9', '10', '14', '17'];
+          break;
+        case '18':
+          $zoneRange = [ '5', '6', '10', '11', '12', '13', '14', '18'];
+          break;
+        case '19':
+          $zoneRange = [ '7', '8', '11', '12', '14', '19'];
+          break;
 			}
       $or = false;
       $counter = count($zoneRange);
@@ -330,22 +343,8 @@ class PlantController extends BaseController {
 				// Add iteration
 				$i+=1;
 			}
-			$plants = DB::select('
-				SELECT plant_list.plant_id as id, plant_name, pi_type.plant_type, bot_name, sun_need, soil_need, season_name, diff_detail, water_need, harvest_time  FROM plant_list
-				INNER JOIN pi_type ON plant_list.plant_type = pi_type.type_id
-				INNER JOIN pi_sun ON plant_list.sun_id = pi_sun.sun_id
-				INNER JOIN pi_soil ON plant_list.soil_id = pi_soil.soil_id
-				INNER JOIN pi_season ON plant_list.season_id = pi_season.season_id
-				INNER JOIN pi_diff ON plant_list.diff_id = pi_diff.diff_id
-				INNER JOIN pi_water ON plant_list.water_id = pi_water.water_id
-				WHERE zone_id = ?
-				OR zone_id = ?
-				OR zone_id = ?
-				OR zone_id = ?
-				OR zone_id = ?
-				OR zone_id = ?
-				OR zone_id = ?', $zoneRange );
-		}
+			$plants = DB::select($statement);
+		} // End Else
 		$plantList = (array)$plants;
 		/* Get the Count */
 		$count = count($plants);
@@ -359,7 +358,7 @@ class PlantController extends BaseController {
 			'water' => DB::table('pi_water')->get()
 		);
 		/* Return it all in a view */
-		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'thisPanel' => 'search',  'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $zone ));
+		return View::make('pages.search', array('title' => 'Plant Directory | Flourish – Your Florida Gardening Guide', 'plants' => $plantList, 'thisPanel' => 'search',  'count' => $count, 'filter' => $filter, 'zip' => $zip, 'zone' => $hzone ));
 	}
 
 /* Plant Details */
@@ -395,20 +394,24 @@ class PlantController extends BaseController {
 
 		/* Return view with variables needed */
 		return View::make('pages.details', array('title' => ($plantChart["0"]->plant_name . ' | Flourish – Your Florida Gardening Guide'), 'chart' => $plantChart["0"],  'thisPanel' => 'details', 'imgSrc' => $altImageSrc["0"], 'info' => $plantInfo["0"], 'img' => $image_location, 'diff' => $plant_diff));
-
 	}
 
 /* Remove Plant */
   public function removePlant(){
     $pid = Input::get('plant');
-    if(!empty(Input::get('list'))){
+    if($pid == ''){
       $lid = Input::get('list');
-      DB::table('user_plants')->where('list_id', $lid)->where('plant_id', $pid)->delete();
-      return Redirect::to('/gp/list');
-    }
-    else{
+      if($lid == 'gardens'){
+        $lname = Input::get('name');
+        $lnum = DB::table('garden_plots')->where('user_id', Session::get('user'))->where('garden_name', $lname)->pluck('garden_id');
+        DB::table('garden_plots')->where('garden_id', $lnum)->delete();
+      }else{
+        DB::table('user_plants')->where('list_id', $lid)->where('plant_id', $pid)->delete();
+      }
+      return Redirect::to('/gp/view/gardens/');
+    }else{
       DB::table('user_plants')->where('plant_id', $pid)->where('user_id', Session::get('user'))->delete();
-      return Redirect::to('/search');
+      return Redirect::back();
     }
   }// End Remove Plant
 

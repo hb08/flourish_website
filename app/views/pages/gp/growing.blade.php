@@ -24,7 +24,7 @@
 								<img src="{{asset(Plants::getAddress($plant->plant_name, 'main'))}}" alt="{{$plant->plant_name}}" />
 								{{$plant->plant_name}}
 							</a>
-							
+							<a href="#" class="delete plantRemove" data-reveal-id="listRemove" id="{{$plant->plant_id}}" name="{{$plant->plant_name}}">X</a>
 						</li>
 					@endforeach
 				</ul>

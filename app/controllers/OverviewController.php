@@ -158,7 +158,6 @@ class OverviewController extends BaseController {
 
 			/* Plants List */
 			}elseif($page == 'list'){
-
 				/* Find list number */
 				$thisList = DB::table('user_lists')->where('user_listname', 'My List')->where('user_id', $userId)->pluck('list_id');
 				/* Get list of plants from DB */
@@ -181,10 +180,54 @@ class OverviewController extends BaseController {
 
 			/* Gardens */
 			}elseif($page == 'gardens'){
-				return View::make('pages.gp.' . $page, array('title' => 'My Gardens | Flourish – Your Florida Gardening Guide ', 'totals' => $totals ));
-			}
+				$gardens = DB::table('garden_plots')->select('garden_id as id', 'garden_name as name','garden_code as code', 'garden_img as img')->where('user_id', $userId)->get();
+				if(!isset($gardens[0]->id)){
+					return View::make('pages.gp.' . $page , array('title' => 'My Gardens | Flourish – Your Florida Gardening Guide ', 'totals' => $totals, 'thisPanel' => 'gardens'));
+				}
+				/* Default to first item in list if no plant in session */
+				if(Session::has('thisPlant')){
+					$thisPlant = Session::get('thisPlant');
+					Session::forget('thisPlant');
+				}else {
+					$thisPlant = $gardens[0]->id;
+				}
+				/* Get The plants and create array using comma delimiters*/
+				$plantsListed = array();
+				/* Find the garden that is selected  */
+				foreach($gardens as $g){
+					if($g->id == $thisPlant){
+						// Decode the json within the returned garden code
+						$decode = json_decode($g->code);
+						$g->code = $decode;
+						// Empty variable for list manipulation
+						$yieldList = array();
+						foreach($g->code as $code){
+								$plantYield = DB::table('plant_list')->where('plant_name','=', $code->shapeText)->pluck('yield');
+								if($code->type == "rectangle"){
+									// Multiply by 2
+									$multiply = 2;
+								}else{
+									// Otherwise by 1
+									$multiply = 1;
+								} // End if Rectangle
 
-
+							// The result array has name, yield, multplier
+							$result = array(
+								'name' => $code->shapeText,
+								'yield' => $plantYield,
+								'multi' => $multiply
+							);
+							// push to list
+							array_push($yieldList, $result);
+						} // End Foreach Code
+						for($i = 0; $i < count($yieldList); $i++){
+								$yieldList[$i]['total'] = ($yieldList[$i]['yield'] * $yieldList[$i]['multi']);
+						}
+					} // if This Plant
+				}/* End Foreach Gardens */
+			} /* End Gardens */
+				/* Direct to Page */
+				return View::make('pages.gp.' . $page , array('title' => 'My Gardens | Flourish – Your Florida Gardening Guide ', 'yieldList' => $yieldList, 'totals' => $totals, 'thisPanel' => 'gardens', 'thisPlant' => $thisPlant, 'gardens' => $gardens ));
 		}else{
 			return View::make('index')->with('title' , 'Flourish – Your Florida Gardening Guide')->with('userattempt', true);
 		}

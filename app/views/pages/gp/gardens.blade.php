@@ -10,128 +10,68 @@
 	</div>
 	<div class="row panel-content">
 		<h1>My Garden Plots</h1>
+
+		@if(isset($gardens))
 		<div class="row medium-collapse">
 			<div class="medium-3 columns side-bar">
 				<ul class="medium-12 columns">
-						<li class="selected">
-							<a href="#">
-								<img src="{{asset('_images/garden_images/garden.png')}}" alt="" />
-								My First Garden
-							</a>
-							<a href="#" class="delete">X</a>
-						</li>
-						<li>
-							<a href="#">
-								<img src="{{asset('_images/garden_images/garden.png')}}" alt="" />
-								Veggie Garden
-							</a>
-							<a href="#" class="delete">X</a>
-						</li>
-				</ul>
-				<a href="../plot_begin.php" class="linkButton">Add Garden</a>
+					@foreach($gardens as $garden)
+						<!-- If $thisPlant exsits, and is the same as this number -->
+								@if(isset($thisPlant) && $thisPlant == $garden->id)
+									<li class="selected">
+								@else
+									<li>
+								@endif
+								<a href="view/gardens/{{$garden->id}}">
+									<img src="{{ $garden->img }}" alt="{{ $garden->name }}" />
+									{{$garden->name}}
+								</a>
+								<a href="#" class="delete plantRemove" data-reveal-id="listRemove" id="{{$garden->id}}" name="{{$garden->name}}">X</a>
+							</li>
+					@endforeach
+					</ul>
+					<a href="../plot" class="linkButton">Add Garden</a>
 			</div>
-			<div class="medium-9 columns end panel-page">
-					<div class="row">
-						<h2>My First Garden</h2>
-					</div>
-					<div class="row">
-						<div class="medium-8 columns">
-							<div class="row links">
-								<a href="#" class="medium-4 columns">Delete Garden Plot</a>
-								<a href="#" class="medium-4 columns medium-offset-4 ">Edit Garden Plot</a>
+				<div class="medium-9 columns end panel-page">
+					@foreach($gardens as $garden)
+							@if(isset($thisPlant) && $thisPlant == $garden->id)
+							<div class="row">
+								<h2>{{$garden->name}}</h2>
 							</div>
-							<img src="{{asset('_images/garden_images/garden.png')}}" alt="" />
-						</div>
-						<div class="medium-4 columns">
-							<table id="garden_plants">
-								<tr>
-									<th>Plants</th>
-									<th>Yield</th>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-								<tr>
-									<td>Plant Name</td>
-									<td>1.2lbs</td>
-								</tr>
-							</table>
-						</div>
-					</div>
+							<div class="row">
+								<div class="medium-8 columns">
+									<div class="row links">
+										<a a href="#" class="delete plantRemove medium-4 columns" data-reveal-id="listRemove" id="{{$garden->id}}" name="{{$garden->name}}">Delete Garden Plot</a>
+										<a href="../plot/edit/{{$garden->id}}" class="medium-4 columns medium-offset-4 ">Edit Garden Plot</a>
+									</div>
+									<img src="{{$garden->img}}" alt="$garden->name" />
+								</div>
+								<div class="medium-4 columns">
+									<table id="garden_plants">
+										<tr>
+											<th>Plants</th>
+											<th>Yield</th>
+										</tr>
+										@for($c = 0; $c < count($yieldList); $c++)
+											@if($yieldList[$c]['yield'] != NULL)
+												<tr>
+													<td>{{$yieldList[$c]['name']}}</td>
+													<td>{{$yieldList[$c]['total']}}<span>lbs</span></td>
+												</tr>
+											@endif
+										@endfor
+									</table>
+								</div>
+							</div>
+							@endif
+						@endforeach
 			</div><!-- End Panel Page -->
 		</div>
+		@else
+		<div class="row addRow">
+			<a href="../plot" class="linkButton">Add Garden</a>
+		</div>
+		@endif
 	</div> <!-- End Panel Content -->
+@include('includes/addRemovePanels')
 @stop

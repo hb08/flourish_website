@@ -14,7 +14,28 @@
       {{ Form::close() }}
     </div>
   </div><!-- End Content -->
-</div><!-- End saveDialog -->
+</div><!-- End Details Remove -->
+<div id="detailsAdd" class="panel reveal-modal" data-reveal aria-hidden="true" role="dialog">
+  <div class="row panel-content">
+    <h1>Add Plant</h1>
+    <div class="medium-8 columns medium-offset-2">
+      {{ Form::open(array('url' => 'addItem')) }}
+        <p class="medium-12 columns text-center">Add</p>
+          <div class="medium-5 medium-centered columns">
+            <input class="hidden" type="text" name="plant" id="addPlant" value="{{$chart->id}}">
+            <input class="text-center" type="text" name="name" id="addName" value="{{$chart->plant_name}}" >
+          </div>
+        <p class="medium-12 columns text-center">to</p>
+        @foreach(User::userLists() as $k => $v)
+        <div class="medium-4 columns checkSpace medium-collapse">
+          <input type="checkbox" name="addList[]" value="{{$v}}"><label>{{$k}}</label>
+        </div>
+        @endforeach
+        <input type="submit" class="linkButton save_garden" value="Add Plant!">
+      {{ Form::close() }}
+    </div>
+  </div><!-- End Content -->
+</div><!-- End Details Add -->
 @elseif($thisPanel == 'search')
 <div id="searchRemove" class="panel reveal-modal slim" data-reveal aria-hidden="true" role="dialog">
   <div class="row panel-content">
@@ -31,7 +52,7 @@
       {{ Form::close() }}
     </div>
   </div><!-- End Content -->
-</div><!-- End saveDialog -->
+</div><!-- End Search Remove -->
 <div id="searchAdd" class="panel reveal-modal" data-reveal aria-hidden="true" role="dialog">
   <div class="row panel-content">
     <h1>Add Plant</h1>
@@ -52,9 +73,8 @@
       {{ Form::close() }}
     </div>
   </div><!-- End Content -->
-</div><!-- End saveDialog -->
-
-@else($thisPanel == 'list')
+</div><!-- End Search Add -->
+@elseif($thisPanel == 'list' || (int)$thisPanel > 0 || $thisPanel == 'gardens')
 <div id="listRemove" class="panel reveal-modal slim" data-reveal aria-hidden="true" role="dialog">
   <div class="row panel-content">
     <h1>Remove Plant</h1>
@@ -67,10 +87,9 @@
             <input class="text-center" type="text" name="name" id="plantName" >
           </div>
         <p class="medium-12 columns text-center">from your lists?</p>
-        <input type="submit" class="linkButton save_garden" value="Yes, Remove Plant!">
+        <input type="submit" class="linkButton save_garden" value="Yes, Remove Garden!">
       {{ Form::close() }}
     </div>
   </div><!-- End Content -->
-</div><!-- End saveDialog -->
-
+</div><!-- End List Remove -->
 @endif

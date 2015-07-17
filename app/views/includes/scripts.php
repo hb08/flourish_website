@@ -36,11 +36,12 @@ function shapeFunc(shape){
     shapes.push( new Circle() );
   }
   // Add to Plant List
-  if(plants == undefined){
-    plants = shapeText + ', ';
-  }else{
-    plants += shapeText + ', ';
+  if(shapeText == undefined){
+    var el = document.getElementById('selectPlant');
+    shapeText =  el.options[el.selectedIndex].value;
   }
+  plants = shapeText + ', ';
+  shapeNum++;
   redraw();
 }
 // Create Shape Superclass
@@ -55,7 +56,7 @@ var Shape = function(){
   // Shape Text
   this.shapeText = shapeText;
   // Shape ID
-  this.id = i;
+  this.id = shapeNum;
   this.idMe = function(){
     return this.id;
   }
@@ -125,11 +126,8 @@ Shape.prototype.showText = function(){
   text(this.shapeText, textX, textY, this.w, this.h);
   // Add to Hidden Input
   shapeHold = getElement('holdShapes');
-  shapeText = JSON.stringify(shapes);
-  shapeHold.html(shapeText);
-  // Add Plants to Hidden Input
-  plantHold = getElement('holdPlants');
-  plantHold.html(plants);
+  holdText = JSON.stringify(shapes);
+  shapeHold.html(holdText);
 }
 // Create shape subclasses calling on Shape Superclass
 var Square = function(){
@@ -167,6 +165,36 @@ Circle.prototype.display = function() {
   ellipse(this.x + (cellSize/2), this.y + (cellSize/2), this.w, this.h);
 };
 
+function addOldShapes(oldShapes){
+  // Get code
+  var old = oldShapes;
+  for(var key in old){
+    var thisText = old[key]['shapeText'];
+    var shape = old[key]['type'];
+    var oldX = old[key]['x'];
+    var oldY = old[key]['y'];
+    var oldH = old[key]['h'];
+    var oldW = old[key]['w'];
+
+    if(shape == 'square'){
+      var newShape = new Square();
+    }
+    if(shape == 'rectangle'){
+      var newShape = new Rectangle();
+    }
+    if(shape == 'circle'){
+      var newShape = new Circle();
+    }
+    newShape.shapeText = thisText;
+    newShape.type = shape;
+    newShape.x = oldX;
+    newShape.y = oldY;
+    newShape.h = oldH;
+    newShape.w = oldW;
+    shapes.push(newShape);
+    shapeNum ++;
+  }
+}
 function setup() {
   // Set Grid Variables
   gx = getElement('width'); // Width of Garden from user
@@ -175,7 +203,11 @@ function setup() {
   gy = gy.html();
   xlength = floor(gw/gx); // Width of Grid Square
   ylength = floor(gh/gy); // Height of Grid Square
-
+  if(document.getElementById('oldCode')){
+    oldCode = document.getElementById('oldCode').innerHTML;
+    code = JSON.parse(oldCode);
+    addOldShapes(code);
+  }
   // Adjust cellSize to user Input
   if(xlength <= ylength){
     cellSize = xlength;

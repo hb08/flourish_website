@@ -9,7 +9,7 @@
 					<b>Sweet Summer Strawberries</b>
 					can be yours. Easy to care for, and even easier to propogate, start preparing your garden today to reap the rewards for years to come!
 				</p>
-				<a href="details/3" class="medium-3 columns linkButton">
+				<a href="details/7" class="medium-3 columns linkButton">
 					See More +
 				</a>
 			</div>

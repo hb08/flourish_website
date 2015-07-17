@@ -6,6 +6,7 @@
   Panel - User/Account
     AddRemove Panels
     Lists
+    Milestones
   Search Results
   Search Details
     TOC
@@ -181,6 +182,10 @@
 span.highlight {
   font: 1.2em 'Milonga';
 }
+.addRow .linkButton {
+  display: inline-block;
+  margin-bottom: 1em;
+}
 /* Account Lists */
 ul.accountLists {
   list-style-type: none;
@@ -189,6 +194,12 @@ ul.accountLists {
 .accountLists li {
   font-size: 1.2 em;
 }
+
+/* Milestone Panel */
+div#calAdd {
+  height: 29em;
+}
+
 
 /*							            *
  * 			SEARCH RESULTS			*
@@ -542,22 +553,28 @@ a#nextMonth:hover {
   padding: 1em;
 }
 /*  	Milestone Events 	*/
-
-.dateList ul {
+.accordion .accordion-navigation>a, .accordion dd>a {
+  background: transparent;
+}
+.accordion .accordion-navigation>.content.active, .accordion dd>.content.active {
+  background: #ADC5A6;
+}
+.dateList ul.accordion {
   list-style-type: none;
   text-align: left;
   border: 2px solid #093B0D;
   padding-left: 0;
   margin-left: 0;
+  margin-bottom: 2em;
 }
 
-.dateList li {
+.dateList ul.accordion li.accordion-navigation {
   display: block;
   border-bottom: 1px solid #093B0D;
   margin: 0;
 }
 
-.dateList li a, li.heading {
+.dateList ul.accordion li.accordion-navigation a {
   color: #304B22;
   display: block;
   font-size: 1em;
@@ -565,24 +582,26 @@ a#nextMonth:hover {
   padding: .5em;
 }
 
-.dateList li a:hover {
+.dateList ul.accordion li.accordion-navigation a:hover {
   background-color: #FED27E;
 }
 
-.dateList li.heading {
+.dateList ul.accordion li.accordion-navigation.heading, .accordion .accordion-navigation.heading.active>a  {
   background-color: #0F552E;
   color: #F5F9F1;
 }
-
-.dateList .planting {
+.dateList ul.accordion li.accordion-navigation.heading > a {
+  color: #F5F9F1;
+}
+.dateList ul.accordion .accordion-navigation.planting, .accordion .accordion-navigation.planting.active>a {
   background-color: #cbdf84;
 }
 
-.dateList .prep {
+.dateList ul.accordion .accordion-navigation.misc, .accordion .accordion-navigation.misc.active>a {
   background-color: #d9ecd3;
 }
 
-.dateList .harvest {
+.dateList ul.accordion .accordion-navigation.harvest, .accordion .accordion-navigation.harvest.active>a {
   background-color: #92c03d;
 }
 /*						        	*
@@ -736,6 +755,9 @@ a#nextMonth:hover {
 .row.gages {
   margin-top: 6em;
 }
+h3.gageTitle{
+  font-family: 'Comfortaa';
+}
 div > svg > rect {
   fill: transparent;
 }
@@ -835,7 +857,8 @@ path {
 }
 .side-bar a > img {
   border: 2px solid #093B0D;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   margin-right: .5em;
 }
 .side-bar ul {
@@ -851,9 +874,16 @@ path {
   position: relative;
 }
 .side-bar li a {
+  display: inline-block;
   color: #093B0D;
   font-weight: 700;
   padding-right: 1em;
+  height: 2em;
+  overflow: hidden;
+}
+.side-bar li a:first-of-type {
+  width: 15em;
+  text-overflow: ellipsis;
 }
 .side-bar a.delete {
   color: rgb(203, 17, 17);
@@ -961,4 +991,7 @@ canvas#gardenCanvas {
 }
 #saveDialog .panel-content {
   padding-bottom: 1em;
+}
+h3.plain{
+  font-family: 'Comfortaa';
 }

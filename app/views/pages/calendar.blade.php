@@ -2,13 +2,49 @@
 @section('content')
 	<div class="row cal">
 		<div class="medium-2 medium-offset-1 columns dateList">
-			<ul>
-				<li class="heading">June 2015</li>
-				<li class="planting"><a href="#" data-reveal-id="calDetails">Planting</a></li>
-				<li class="prep"><a href="#">Milestone</a></li>
-				<li class="harvest"><a href="#">Harvest</a></li>
+			<ul class="accordion" data-accordion>
+				<li class="heading accordion-navigation">
+					<a href="#all"> June 2015</a>
+					<div id="all" class="content">
+						@foreach($milestones as $m )
+
+						@endforeach
+					</div>
+				</li>
+				<li class="planting accordion-navigation">
+					<a href="#planting">Planting</a>
+					<div id="planting" class="content">
+						<ul>
+						@foreach($milestones as $m)
+							<li><a href="#">{{$m['pname']}}</a></li>
+						@endforeach
+						</ul
+					</div>
+				</li>
+				<li class="misc accordion-navigation">
+					<a href="#misc">Misc</a>
+					<div id="misc" class="content">
+						<ul>
+						@foreach($pnames as $p)
+							<li><a href="#">{{$p['name']}}</a></li>
+						@endforeach
+						</ul
+					</div>
+				</li>
+				<li class="harvest accordion-navigation">
+					<a href="#harvest">Harvest</a>
+					<div id="harvest" class="content">
+						<ul>
+							@foreach($milestones as $m)
+								@if($m['harvest'] != '')
+									<li><a href="#">{{$m['pname']}}</a></li>
+								@endif
+							@endforeach
+						</ul
+					</div>
+				</li>
 			</ul>
-			<a href="#" class="linkButton">Add Milestone!</a>
+			<a href="#" data-reveal-id="calAdd" class="linkButton">Add Milestone!</a>
 		</div>
 			<table class="medium-7 medium-offset-1 end columns calendar">
 				<thead>
@@ -75,17 +111,6 @@
 					</tr>
 				</tbody>
 			</table>
-			<div id="calDetails" class="reveal-modal" data-reveal  aria-hidden="true" role="dialog">
-				<div class="detailsPanel">
-					<h1>June 9th</h1>
-					<p class="milestone">Your <a href="details/">Strawberry</a> sprouts soon!</p>
-					<img src="{{asset('_images/plant_images/strawberry_sprout.jpg')}}" alt="Strawberry Sprout| Flourish – Your Florida Gardening Guide" />
-					<p class="details">
-						{{ DB::table('plant_info')->where('plant_id', 4)->pluck('plant_prep')}}
-					</p>
-				</div>
-			  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-				<div class="reveal-modal-bg" style="display: none"></div>
-			</div>
 	</div><!-- End Calendar Row -->
+	@include('includes.addRemoveMilestone')
 @stop
