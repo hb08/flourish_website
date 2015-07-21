@@ -18,6 +18,11 @@
     <div class="row">
             @yield('content')
     </div>
+    @if(Session::has('user'))
+      @include('includes.account')
+    @else
+      @include('includes.login')
+    @endif
     <div class="row">
     		 @include('includes.footer')
     </div>

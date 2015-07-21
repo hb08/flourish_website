@@ -8,7 +8,7 @@
 		<li class="account">
 			<a href="account"><span class="icon"></span><p>My Account</p></a>
 			<ul class="dd">
-				<li><a href="profile">My Profile</a></li>
+				<li><a href="#" data-reveal-id="profilePanel" >My Profile</a></li>
 				<li><a href="logout">Logout</a></li>
 			</ul>
 		</li>
@@ -23,7 +23,7 @@
 	<li class="account">
 		<a href="account"><span class="icon"></span><p>My Account</p></a>
 		<ul class="dd">
-			<li><a href="profile">My Profile</a></li>
+			<li><a href="#" data-reveal-id="profilePanel" >My Profile</a></li>
 			<li><a href="logout">Logout</a></li>
 		</ul>
 	</li>

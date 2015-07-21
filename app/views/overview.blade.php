@@ -21,40 +21,39 @@
 	</div>
 	<div class="row gages">
 		<div class="medium-12 columns">
-			<h3 class="gageTitle">Totals From All Lists</h3>
+			<h3 class="gageTitle">Plants Growing</h3>
 		</div>
-		<div class="medium-3 columns">
-			@if($totals)
+@if($totals['counts']['growing'] > 0)
+		<div class="medium-3 columns" id="waterdial">
 				<p id="water" class="hidden">@foreach($totals["water"] as $id => $need){{$id}},{{$need}}|@endforeach</p>
-				<p class="dialLabel">Watering Schedule</p>
-			@endif
+					<p class="dialLabel">Watering Schedule</p>
 			<div id="waterchart">
 			</div>
 		</div>
-		<div class="medium-3 columns">
-			@if($totals)
+		<div class="medium-3 columns" id="soildial">
 				<p id="soil" class="hidden">@foreach($totals["soil"] as $id => $need){{$id}},{{$need}}|@endforeach</p>
 				<p class="dialLabel">Soil Type </p>
-			@endif
 			<div id="soilchart">
 			</div>
 		</div>
-		<div class="medium-3 columns">
-			@if($totals)
+		<div class="medium-3 columns" id="sundial">
 				<p id="sun" class="hidden">@foreach($totals["sun"] as $id => $need){{$id}},{{$need}}|@endforeach</p>
 				<p class="dialLabel">Sun Needs</p>
-			@endif
 			<div id="sunchart">
 			</div>
 		</div>
-		<div class="medium-3 columns">
-			@if($totals)
+		<div class="medium-3 columns" id="diffdial">
 				<p id="diff" class="hidden">@foreach($totals["diff"] as $id => $need){{$id}},{{$need}}|@endforeach</p>
 				<p class="dialLabel">Difficulty Level</p>
-			@endif
 			<div id="diffchart">
 			</div>
 		</div>
+@elseif($totals['counts']['growing'] == 0)
+		<p>You have 0 plants on your <a href="gp/growing">Growing List.</a> </p>
+			<a href="/public/search" class="linkButton">Add Plants</a>
+
+
+@endif
 		@include('includes.donut_charts')
 	</div>
 @stop

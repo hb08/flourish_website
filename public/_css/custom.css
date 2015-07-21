@@ -757,6 +757,7 @@ a#nextMonth:hover {
 }
 h3.gageTitle{
   font-family: 'Comfortaa';
+  margin-bottom: 1em;
 }
 div > svg > rect {
   fill: transparent;
@@ -774,6 +775,13 @@ path {
   left: 6em;
   top: 4.7em;
   line-height: 1.1em;
+}
+p.tilted {
+  height: 235px;
+  width: 235px;
+  position: absolute;
+  top: -18px;
+  left: 19px;
 }
 /* Panel Content */
 .row.panel-content {

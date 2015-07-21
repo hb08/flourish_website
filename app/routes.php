@@ -44,12 +44,15 @@ Route::post('/plot/new', array('uses' => 'PlotController@newPlot'));
 Route::post('/saveGarden', array('uses' => 'PlotController@saveGarden'));
 /* Edit Garden */
 Route::get('/plot/edit/{id}', array('uses' => 'PlotController@editPlot'));
+
 /* Process Registration */
 Route::post('/register',array('uses' => 'HomeController@doRegister'));
 /* Process Login */
 Route::post('/login', array('uses' => 'HomeController@doLogin'));
 /* Logout */
 Route::get('/logout', array('uses' => 'HomeController@doLogout'));
+/* Update Account */
+Route::post('/profile', array('uses' => 'HomeController@updateUser'));
 
 /* Remove Items */
 Route::post('/removeItem', array('uses' => 'PlantController@removePlant'));

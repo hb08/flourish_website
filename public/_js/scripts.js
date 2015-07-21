@@ -50,4 +50,80 @@ $(document).ready(function(){
 			$('#addPlant').val($thisId);
 			$('#addName').val($thisName);
 	});
-});
+
+	// Curve Text On GO only
+	if(document.getElementById('diffchart')){
+			var totalCount = 0;
+		// Parse all needs for all dials and sepearte by type, adding new text to page
+		var allDials = [];
+		allDials['water'] = splitText('water');
+		allDials['soil'] = splitText('soil');
+		allDials['sun'] = splitText('sun')
+		allDials['diff'] = splitText('diff');
+		function splitText(thisType){ // Splits the text into an  array
+			var textChange = document.getElementById(thisType).innerHTML;
+			var splitText = textChange.split("|");
+			var final = [];
+			var start = '#' + thisType + 'dial';
+			var i = 0;
+			splitText.forEach(function(e){
+					// For every split item
+					var finalSplit = e.split(",");
+					// Check if it's null (end) if not, split and add
+					if(finalSplit[0] != ""){
+						final.push({
+							"type": finalSplit[0],
+							"need": finalSplit[1]
+						});
+					var insert = "<p id='" + thisType + "_arc_" + i + "' class='tilted'>" + finalSplit[0] + "</p>";
+					$(start).prepend(insert);
+					var $arcing = $('#' + thisType + "_arc_" + i).hide();
+					// Add to Total Count
+					totalCount += parseInt(finalSplit[1]);
+					i++;
+					if(finalSplit[1] != 0){
+						var coverUp = '#' + thisType + 'dial .dialLabel';
+						$(coverUp).css({'z-index' : 4, 'background-color': 'white'})
+						init();
+						function init(){
+							// Get number of current
+							$arcing.show().arctext({radius:225});
+						}
+					}
+				}
+			})
+			final['totalCount'] = totalCount;
+			totalCount = 0;
+			return final;
+		} // End SplitText Function
+		rotateLabels(allDials['water'], 'water');
+		rotateLabels(allDials['soil'], 'soil');
+		rotateLabels(allDials['sun'], 'sun');
+		rotateLabels(allDials['diff'], 'diff');
+
+		function rotateLabels(dial, type){
+			var tc = dial['totalCount'];
+			var rotation = 0;
+			// For each item
+			for(var ii = 0; ii < dial.length; ii++){
+				// Find how many there are
+				var thisW = dial[ii]['need'];
+				// Divide by total to find what it is as a fraction
+				var perc = thisW/tc;
+				// Multiply by 360 to find amount to rotate
+				var thisR = 360 * perc;
+				if(ii == 0){ // First item
+					// Start rotation at 20
+					rotation += 20;
+				}
+				rotateThis = 'rotate(' + rotation + 'deg)';
+				var elem = $('#' + type + '_arc_' + ii);
+				elem.css({"transform": rotateThis});
+				rotation += thisR;
+			}
+		}
+	} // End If
+
+
+
+}); // End Doc Ready

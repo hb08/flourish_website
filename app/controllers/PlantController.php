@@ -399,16 +399,12 @@ class PlantController extends BaseController {
 /* Remove Plant */
   public function removePlant(){
     $pid = Input::get('plant');
-    if($pid == ''){
-      $lid = Input::get('list');
-      if($lid == 'gardens'){
-        $lname = Input::get('name');
-        $lnum = DB::table('garden_plots')->where('user_id', Session::get('user'))->where('garden_name', $lname)->pluck('garden_id');
-        DB::table('garden_plots')->where('garden_id', $lnum)->delete();
-      }else{
-        DB::table('user_plants')->where('list_id', $lid)->where('plant_id', $pid)->delete();
-      }
-      return Redirect::to('/gp/view/gardens/');
+    $lname = Input::get('name');
+    $lid = Input::get('list');
+    if($lid == 'gardens'){
+      $lnum = DB::table('garden_plots')->where('user_id', Session::get('user'))->where('garden_name', $lname)->pluck('garden_id');
+      DB::table('garden_plots')->where('garden_id', $pid)->delete();
+      return Redirect::to('/gp/gardens/');
     }else{
       DB::table('user_plants')->where('plant_id', $pid)->where('user_id', Session::get('user'))->delete();
       return Redirect::back();

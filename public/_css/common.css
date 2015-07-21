@@ -71,7 +71,9 @@ body {
   display: block;
   height: 1em;
 }
-
+.bold {
+  font-weight: bold;
+}
 .row {
   position: relative;
 }

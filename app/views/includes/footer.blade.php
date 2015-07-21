@@ -15,7 +15,8 @@
 <!-- Slick -->
 <script type="text/javascript" src="{{ asset('_js/slick.js') }}"></script>
 
+<!-- Arc Text -->
+<script type="text/javascript" src="{{ asset('_js/jquery.arctext.js') }}"></script>
+
 <!-- My jQuery -->
 <script type="text/javascript" src="{{ asset('_js/scripts.js') }}"></script>
-
-

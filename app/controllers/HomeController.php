@@ -84,12 +84,24 @@ class HomeController extends BaseController {
 			}
 	}
 }
-
 /* Logout */
 	public function doLogout()
 	{
 		Session::flush();
 		Auth::logout();
 		return Redirect::to('/');
+	}
+/* User Update */
+	public function updateUser()
+	{
+		$uid = Session::get('user');
+		$new = Input::all();
+		DB::table('users')
+			->where('user_id', $uid)
+			->update(array(
+				'email' => $new['email'],
+				'zip_code' => $new['zip_code']
+		));
+		return Redirect::back();
 	}
 }

@@ -45,8 +45,7 @@
        data.addColumn('string', labelName);
        data.addColumn('number', 'Times');
        for( i = 0; i < chartType.length; i++){
-         console.log("On " + i);
-         thisType = chartType[i]['type'];
+         thisType = "<span class='labelWords'>" + chartType[i]['type'] + "</span>";
          thisNeed = parseInt(chartType[i]['need']);
          data.addRow([thisType , thisNeed]);
        }
@@ -64,14 +63,16 @@
          chartArea: {left: 0, top: 5, width: '95%', height: '95%'},
          pieHole: 0.5,
          legend: 'none',
+         enableInteractivity: false,
          colors: colors,
          pieSliceBorderColor: '#093B0D',
          pieSliceText: 'value',
-         pieSliceTextStyle: {fontSize: 20, color: '#093B0D'}
+         pieSliceTextStyle: {fontSize: 20, color: '#093B0D'},
        };
        var chart = new google.visualization.PieChart(document.getElementById(labelName));
        chart.draw(data, options);
        showLabels();
      } // End Draw Chart
 } // End Draw This Chart
+
 </script>

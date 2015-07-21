@@ -129,21 +129,33 @@ class PlotController extends BaseController {
 			$gardenSize = json_encode($gardenSize);
 			// Check if this is a current garden, rename if it is not
 			if($gardenId){
-				$name = $name;
+				// Check if it's the same name as what is being edited
+				if($check){
+					DB::table('garden_plots')
+						->where('garden_id', $gardenId)
+						->update(array( 'garden_name' => $name, 'garden_code' => $garden_code, 'garden_img' => Input::get('garden'))
+					);
+				}elseif($check == ''){
+					// Add to database if it's a changed name
+					DB::table('garden_plots')->insert(
+						array('user_id' => Session::get('user'), 'garden_name' => $name,  'garden_code' => $garden_code, 'garden_img' => Input::get('garden'), 'garden_size' => $gardenSize )
+					);
+				}
+			}else{
+				// Add to database if it's a changed name
+				DB::table('garden_plots')->insert(
+					array('user_id' => Session::get('user'), 'garden_name' => $name,  'garden_code' => $garden_code, 'garden_img' => Input::get('garden'), 'garden_size' => $gardenSize )
+				);
 			}
-			if($check > 0 ){
-				$name .= "_" . $i;
-			}
-			// Add to database
-			DB::table('garden_plots')->insert(
-				array('user_id' => Session::get('user'), 'garden_name' => $name,  'garden_code' => $garden_code, 'garden_img' => Input::get('garden'), 'garden_size' => $gardenSize )
-			);
+
 			return Redirect::to('/gp/gardens');
+
 		}
 
 	/* Edit Plot */
 	public function editPlot($garden){
 			$gardenId = $garden;
+			Session::put('gid', $gardenId);
 			$thisGarden = DB::table('garden_plots')->where('garden_id', $gardenId)->select('garden_name as name', 'garden_code as code', 'garden_size as size')->get();
 			// Array waiting for Garden Numbers
 			$gardenNumber = array();

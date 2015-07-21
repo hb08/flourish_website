@@ -10,7 +10,6 @@
 	</div>
 	<div class="row panel-content">
 		<h1>My Garden Plots</h1>
-
 		@if(isset($gardens))
 		<div class="row medium-collapse">
 			<div class="medium-3 columns side-bar">
