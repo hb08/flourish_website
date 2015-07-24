@@ -52,10 +52,12 @@
                 <?php $counter += 1; ?>
             @endif
                 <!-- Content for all -->
-                @if($list->user_listname == 'My Zip Code')
+                @if($list->user_listname == 'My List')
                   <input type="checkbox" name="garden_{{$list->list_id}}" value="garden_{{ $list->list_id}}" checked='checked' >{{$list->user_listname}}
+                @else
+                  <input type="checkbox" name="garden_{{$list->list_id}}" value="garden_{{ $list->list_id}}">{{$list->user_listname}}
                 @endif
-                <input type="checkbox" name="garden_{{$list->list_id}}" value="garden_{{ $list->list_id}}">{{$list->user_listname}}
+
               </div>
           @endforeach
               </div>

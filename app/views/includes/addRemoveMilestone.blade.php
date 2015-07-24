@@ -15,19 +15,19 @@
         <p class="medium-12 columns text-center">Planted on</p>
         <div class="row">
           <div class="medium-5 medium-centered columns">
-            <input type="date" name="startDate">
+            <input type="date" name="startDate" required>
           </div>
         </div>
         <p class="medium-12 columns text-center">Track</p>
         <div class="row">
           <div class="medium-4 columns">
-            <input type="checkbox" name="addMilestone[]" value="Planting"><label>Planting</label>
+            <input type="checkbox" name="addMilestone[]" value="Planting" checked="checked"><label>Planting</label>
           </div>
           <div class="medium-4 columns">
-            <input type="checkbox" name="addMilestone[]" value="Misc"><label>Misc</label>
+            <input type="checkbox" name="addMilestone[]" value="Misc" checked="checked"><label>Misc</label>
           </div>
           <div class="medium-4 columns">
-            <input type="checkbox" name="addMilestone[]" value="Harvest"><label>Harvest</label>
+            <input type="checkbox" name="addMilestone[]" value="Harvest" checked="checked"><label>Harvest</label>
           </div>
         </div>
         <input type="submit" class="linkButton save_garden" value="Add Plant!">

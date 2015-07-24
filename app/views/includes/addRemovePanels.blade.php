@@ -28,7 +28,7 @@
         <p class="medium-12 columns text-center">to</p>
         @foreach(User::userLists() as $k => $v)
         <div class="medium-4 columns checkSpace medium-collapse">
-          <input type="checkbox" name="addList[]" value="{{$v}}"><label>{{$k}}</label>
+          <input type="checkbox" name="addList[]" value="{{$v}}" checked="checked"><label>{{$k}}</label>
         </div>
         @endforeach
         <input type="submit" class="linkButton save_garden" value="Add Plant!">
@@ -66,7 +66,7 @@
         <p class="medium-12 columns text-center">to</p>
         @foreach(User::userLists() as $k => $v)
         <div class="medium-4 columns checkSpace medium-collapse">
-          <input type="checkbox" name="addList[]" value="{{$v}}"><label>{{$k}}</label>
+          <input type="checkbox" name="addList[]" value="{{$v}}" checked="checked"><label>{{$k}}</label>
         </div>
         @endforeach
         <input type="submit" class="linkButton save_garden" value="Add Plant!">

@@ -62,8 +62,7 @@ class HomeController extends BaseController {
 			);
 		$check = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('password');
 			// attempt to do the login
-			if ($check)
-		{
+			if ($check)	{
 			if( Hash::check($userdata['password'], $check))
 			{
 				// Add User Status, Id, and Zip to SESSION USER
@@ -72,15 +71,12 @@ class HomeController extends BaseController {
 				Session::put('ustatus', 1);
 				Session::put('user', $uid);
 				Session::put('zip', $userZip);
-						return Redirect::to('/');
+						return Redirect::back();
 			}
 			return Redirect::to('register');
 			} else {
 					// validation not successful, send back to form
-					echo "Didn't work.\n";
-					echo Input::get('user_name');
-					echo "\n";
-					echo Hash::make(Input::get('password'));
+					return Redirect::to('/');
 			}
 	}
 }
@@ -102,6 +98,9 @@ class HomeController extends BaseController {
 				'email' => $new['email'],
 				'zip_code' => $new['zip_code']
 		));
+		$userZip = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
+		Session::forget('zip');
+		Session::put('zip', $userZip);
 		return Redirect::back();
 	}
 }
