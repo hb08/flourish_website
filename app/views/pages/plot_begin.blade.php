@@ -23,11 +23,11 @@
       <div class="row medium-collapse">
         <div class="medium-11 columns medium-offset-1 plot_inputs medium-offset">
           <div class="medium-2  medium-offset-2 columns">
-            <input type="number" name="width" min="2" max="20" placeholder="W"/>
+            <input type="number" name="width" min="2" max="15" placeholder="W"/>
           </div>
           <label class="medium-1 columns text-left" for="width">feet</label>
           <div class="medium-2 columns" >
-            <input type="number" name="height"  min="2" max="20" placeholder="H" />
+            <input type="number" name="height"  min="2" max="15" placeholder="H" />
           </div>
           <label class="medium-1 columns end text-left" for="height">feet</label>
         </div>

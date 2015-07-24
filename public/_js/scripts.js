@@ -103,7 +103,10 @@ function hideEvents() {
 			$('#addPlant').val($thisId);
 			$('#addName').val($thisName);
 	});
-
+	// Remove default
+	$('#noLink').click(function(e){
+		e.preventDefault();
+	});
 	// Curve Text On GO only
 	if(document.getElementById('diffchart')){
 			var totalCount = 0;
