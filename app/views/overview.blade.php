@@ -50,9 +50,7 @@
 		</div>
 @elseif($totals['counts']['growing'] == 0)
 		<p>You have 0 plants on your <a href="gp/growing">Growing List.</a> </p>
-			<a href="/public/search" class="linkButton">Add Plants</a>
-
-
+			<a href="/search" class="linkButton">Add Plants</a>
 @endif
 		@include('includes.donut_charts')
 	</div>

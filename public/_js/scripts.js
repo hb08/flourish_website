@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	// Force Panel Open
+	// Force Panel Open if not logged in
 	$forceOpen = document.getElementById('userAttempt');
 	if($forceOpen != null){
 		$('#loginPanel').foundation('reveal', 'open');
@@ -7,22 +7,75 @@ $(document).ready(function(){
 		$("#errorP").prepend('You must be a registered user to access this content!');
 	}
 
+// Image Slider on Index
+if(document.getElementById("index") ){
+		// Slider
+		$('.left').click(function(e){
+			$('.slides').slickNext();
+		});
+		$('.slides').slick({
+			accessibility: true,
+			arrows:true,
+			autoplay: true,
+			autoplaySpeed: 5000,
+			dots: true,
+			dotsClass: 'slick-dots',
+			pauseOnDotsHover: false,
+			speed: 500
+		});
+	}
 
-	// Slider
-	$('.left').click(function(e){
-		$('.slides').slickNext();
-	});
-	$('.slides').slick({
-		accessibility: true,
-		arrows:true,
-		autoplay: true,
-		autoplaySpeed: 5000,
-		dots: true,
-		dotsClass: 'slick-dots',
-		pauseOnDotsHover: false,
-		speed: 500
-	});
+// Calendar
+if(document.getElementById('calendar')){
+	$wrapper = $( '#custom-inner' );
+	$calendar = $( '#calendar' );
+	cal = $calendar.calendario( {
+		onDayClick : function( $el, $contentEl, dateProperties ) {
+			if( $contentEl.length > 0 ) {
+				showEvents( $contentEl, dateProperties );
+			}
 
+		},
+		caldata : mileEvents,
+		displayWeekAbbr : true
+	} ),
+	$month = $( '#custom-month' ).html( cal.getMonthName() ),
+	$year = $( '#custom-year' ).html( cal.getYear() );
+
+$( '#custom-next' ).on( 'click', function() {
+	cal.gotoNextMonth( updateMonthYear );
+} );
+$( '#custom-prev' ).on( 'click', function() {
+	cal.gotoPreviousMonth( updateMonthYear );
+} );
+
+function updateMonthYear() {
+	$month.html( cal.getMonthName() );
+	$year.html( cal.getYear() );
+}
+// just an example..
+function showEvents( $contentEl, dateProperties ) {
+	hideEvents();
+
+	var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
+		$close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
+
+	$events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
+
+	setTimeout( function() {
+		$events.css( 'top', '0%' );
+	}, 25 );
+
+}
+function hideEvents() {
+
+	var $events = $( '#custom-content-reveal' );
+	if( $events.length > 0 ) {
+		$events.css( 'top', '100%' );
+	}
+
+}
+}
 	// Save Garden
 	$('.save_garden').click(function(){
 	  var name = document.getElementById('garden_name').value;

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
-	<div class="medium-6 columns slides">
+<div class="row" id="index">
+	<div class="medium-6 columns slides" >
 		<div>
 			<img src="{{ asset('_images/image_slider/slider_1_strawberry.jpg') }}" alt="Strawberries | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">

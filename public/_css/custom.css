@@ -435,6 +435,383 @@ hr {
 /*							    *
  * 			CALENDAR		*
  * 							    */
+ ul.mList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li.plant {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.mList li, .mList a {
+  width: 100%;
+  display: block;
+}
+ .fc-calendar-container {
+ 	position: relative;
+ 	height: 400px;
+ 	width: 400px;
+ }
+
+ .fc-calendar {
+ 	width: 100%;
+ 	height: 100%;
+ }
+
+ .fc-calendar .fc-head {
+ 	height: 30px;
+ 	line-height: 30px;
+ 	background: #ccc;
+ 	color: #fff;
+ }
+
+ .fc-calendar .fc-body {
+ 	position: relative;
+ 	width: 100%;
+ 	height: 100%;
+ 	height: -moz-calc(100% - 30px);
+ 	height: -webkit-calc(100% - 30px);
+ 	height: calc(100% - 30px);
+ 	border: 1px solid #ddd;
+ }
+
+ .fc-calendar .fc-row {
+ 	width: 100%;
+ }
+
+ .fc-four-rows .fc-row  {
+ 	height: 25%;
+ }
+
+ .fc-five-rows .fc-row  {
+ 	height: 20%;
+ }
+
+ .fc-six-rows .fc-row {
+ 	height: 16.66%;
+ 	height: -moz-calc(100%/6);
+ 	height: -webkit-calc(100%/6);
+ 	height: calc(100%/6);
+ }
+
+ .fc-calendar .fc-row > div,
+ .fc-calendar .fc-head > div {
+ 	float: left;
+ 	height: 100%;
+ 	width:  14.28%; /* 100% / 7 */
+ 	width: -moz-calc(100%/7);
+ 	width: -webkit-calc(100%/7);
+ 	width: calc(100%/7);
+ 	position: relative;
+ }
+
+ /* IE 9 is rounding up the calc it seems */
+ .ie9 .fc-calendar .fc-row > div,
+ .ie9 .fc-calendar .fc-head > div {
+ 	width:  14.2%;
+ }
+
+ .fc-calendar .fc-row > div {
+ 	padding: 4px;
+ 	overflow: hidden;
+ 	position: relative;
+ }
+
+ .fc-calendar .fc-head > div {
+ 	text-align: center;
+ }
+
+ .fc-calendar .fc-row > div > span.fc-date {
+ 	position: absolute;
+ 	width: 30px;
+ 	height: 20px;
+ 	font-size: 20px;
+ 	line-height: 20px;
+ 	font-weight: 700;
+ 	color: #ddd;
+ 	text-shadow: 0 -1px 0 rgba(255,255,255,0.8);
+ 	bottom: 5px;
+ 	right: 5px;
+ 	text-align: right;
+ }
+
+ .fc-calendar .fc-row > div > span.fc-weekday {
+ 	padding-left: 5px;
+ 	display: none;
+ }
+
+ .fc-calendar .fc-row > div.fc-today {
+ 	background: #fff4c3;
+ }
+
+ .fc-calendar .fc-row > div.fc-out {
+ 	opacity: 0.6;
+ }
+
+ .fc-calendar .fc-row > div:last-child,
+ .fc-calendar .fc-head > div:last-child {
+ 	border-right: none;
+ }
+
+ .fc-calendar .fc-row:last-child {
+ 	border-bottom: none;
+ }
+ /* Custom calendar elements */
+
+.custom-calendar-wrap {
+  border: 3px solid #0F552E;
+	margin: 10px auto;
+	position: relative;
+	overflow: hidden;
+}
+
+.custom-inner {
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.custom-inner:before,
+.custom-inner:after  {
+	content: '';
+	width: 99%;
+	height: 50%;
+	position: absolute;
+	background: #f6f6f6;
+	bottom: -4px;
+	left: 0.5%;
+	z-index: -1;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.custom-inner:after {
+	content: '';
+	width: 98%;
+	bottom: -7px;
+	left: 1%;
+	z-index: -2;
+}
+
+.custom-header {
+  background: #D3E7CD;
+	padding: 5px 10px 10px 20px;
+	height: 70px;
+	position: relative;
+	border-top: 5px solid #0F552E;
+  border-bottom: 3px solid #0F552E;
+}
+.custom-header h3 {
+	text-align: center;
+	text-transform: uppercase;
+}
+.custom-header h2, .custom-header h3{
+  font: 'Milonga';
+  display: inline-block;
+}
+.custom-header h2 {
+	color: #E75C24;
+}
+
+.custom-header h3 {
+	font-size: 1em;
+	font-weight: 700;
+  margin-left: .5em;
+	color: #0F552E;
+}
+
+.custom-header nav span {
+  background-image: url("../_images/icons/cal_arrows.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 2.3em;
+  margin: auto;
+  width: 1.3em;
+  position: absolute;
+  top: 1em;
+  cursor: pointer;
+}
+
+.custom-header nav span:first-child {
+  background-position: top left;
+  left: 1em;
+}
+.custom-header nav span:last-child {
+  background-position: top right;
+  right: 1em
+}
+.custom-header nav span:first-child:hover {
+  background-position: bottom left;
+}
+.custom-header nav span:last-child:hover {
+  background-position: bottom right;
+}
+
+.custom-content-reveal {
+	background: #f6f6f6;
+	background: rgba(246, 246, 246, 0.9);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 100;
+	top: 100%;
+	left: 0px;
+	text-align: center;
+	-webkit-transition: all 0.6s ease-in-out;
+	-moz-transition: all 0.6s ease-in-out;
+	-o-transition: all 0.6s ease-in-out;
+	-ms-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+  overflow-y: scroll;
+}
+
+.custom-content-reveal span.custom-content-close {
+  background-image: url('../_images/icons/addDelete.png');
+    background-repeat: no-repeat;
+    cursor:pointer;
+    height: 15px;
+    position: absolute;
+    top: 14px;
+    right: 5px;
+    text-indent: -9999px;
+    width: 15px;
+    z-index: 2;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-content-reveal span.custom-content-close:after {
+	content: 'x';
+	font-size: 18px;
+	color: #fff;
+}
+.custom-content-reveal span.custom-content-close:hover {
+  background-position: bottom left;
+}
+
+.custom-content-reveal a,
+.custom-content-reveal span {
+	font-size: 22px;
+	padding: 10px 30px;
+	display: block;
+}
+
+.custom-content-reveal h4 {
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 300;
+	letter-spacing: 3px;
+	color: #0F552E;
+	padding: 20px;
+	background: #D3E7CD;
+	border-bottom: 1px solid #ddd;
+	border-top: 5px solid #0F552E;
+	box-shadow: 0 1px rgba(255,255,255,0.9);
+}
+
+.custom-content-reveal span {
+	color: #888;
+}
+
+.custom-content-reveal a {
+	color: #ef4f69;
+}
+
+.custom-content-reveal a:hover {
+	color: #333;
+}
+
+ /* Modifications */
+
+ .fc-calendar-container {
+ 	height: 400px;
+ 	width: auto;
+ 	background: #fff;
+ 	box-shadow: inset 0 1px rgba(255,255,255,0.8);
+ }
+
+ .fc-calendar .fc-head {
+ 	background: transparent;
+ 	color: #0F552E;
+ 	font-weight: bold;
+ 	text-transform: uppercase;
+ 	font-size: 12px;
+ }
+
+ .fc-calendar .fc-row > div {
+ 	background: #fff;
+ 	cursor: pointer;
+ }
+
+ .fc-calendar .fc-row > div:empty {
+ 	background: transparent;
+ }
+
+ .fc-calendar .fc-row > div > span.fc-date {
+ 	top: 50%;
+ 	left: 50%;
+ 	text-align: center;
+ 	margin: -10px 0 0 -15px;
+ 	color: #686a6e;
+ 	font-weight: 400;
+ 	pointer-events: none;
+ }
+
+ .fc-calendar .fc-row > div.fc-today {
+ 	background: #E75C24;
+ 	box-shadow: inset 0 -1px 1px rgba(0,0,0,0.1);
+  border-radius: 50%;
+ }
+
+ .fc-calendar .fc-row > div.fc-today > span.fc-date {
+ 	color: #fff;
+ 	text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+ }
+
+ .fc-calendar .fc-row > div.fc-content:after {
+ 	content: '\00B7';
+ 	text-align: center;
+ 	width: 20px;
+ 	margin-left: -10px;
+ 	position: absolute;
+ 	color: #cbdf84;
+ 	font-size: 70px;
+ 	line-height: 20px;
+ 	left: 50%;
+ 	bottom: 3px;
+ }
+
+ .fc-calendar .fc-row > div.fc-today.fc-content:after {
+ 	color: #F09120;
+ }
+
+ .fc-calendar .fc-row > div.fc-content:hover:after{
+ 	color: #F09120;
+ }
+
+ .fc-calendar .fc-row > div.fc-today.fc-content:hover:after{
+ 	color: #fff;
+ }
+ .fc-content > div > .mEvent {
+     display: none;
+ }
+ .fc-calendar .fc-row > div > div a,
+ .fc-calendar .fc-row > div > div span {
+ 	display: none;
+ 	font-size: 22px;
+ }
+
+ @media screen and (max-width: 400px) {
+ 	.fc-calendar-container {
+ 		height: 300px;
+ 	}
+ 	.fc-calendar .fc-row > div > span.fc-date {
+ 		font-size: 15px;
+ 	}
+ }
+
+
+
 
 .row .cal {
   margin-top: 2em;
@@ -445,84 +822,43 @@ table tr th, table tr td, table tr {
   text-align: center;
 }
 
-table {
-  border: 3px solid #0F552E;
-}
-
-table thead {
-  background: #D3E7CD;
-}
-.calendar {
-  position: relative;
-}
-.calendar thead tr {
-  border-bottom: 3px solid #0F552E;
-  margin-bottom: .1em;
-}
-
-.calendar th {
-  color: #E75C24;
-  font: 2.1em 'Cherry Swash';
-}
-
-.calendar th:nth-of-type(2) {
-  border-right: 3px solid #0F552E;
-  border-left: 3px solid #0F552E;
-}
-
-.calendar a.arrow {
-  background-image: url("../_images/icons/cal_arrows.png");
-  background-position: top left;
-  background-repeat: no-repeat;
-  display: block;
-  height: 1.1em;
-  margin: auto;
-  width: 1em;
-}
-
-a#nextMonth {
-  background-position: top right;
-}
-
-a#prevMonth:hover {
-  background-position: bottom left;
-}
-
-a#nextMonth:hover {
-  background-position: bottom right;
-}
-
-.calendar td {
-  font-size: 1.3em;
-  padding: 2em 1em;
-  color: #0F552E;
-}
-
-.calendar tr:nth-of-type(even), .calendar tr {
-  background-color: transparent
-}
-
-.today {
-  font-weight: 700;
-  background-image: url('../_images/icons/cal_today.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-}
 /*    Milestone Details */
-.reveal-modal {
-  left: 0;
-  margin: 0 auto;
-  max-width: 80em;
-  right: 0;
-  width: 47%;
-  height: 42em;
+
+.dp {
+  background: white;
 }
-#calDetails {
-  top: 24% !important;
-  left: 19.5% !important;
-  background: rgba(0, 0, 0, 0.69);
-  padding-top: 0;
-  width: 45.6%;
+.custom-content-reveal h3 {
+  color: #093B0D;
+  font-size: 1.2em;
+  text-transform: none;
+  background: transparent;
+  margin-bottom: 0;
+  border: none;
+  padding-bottom: 1em;
+}
+.custom-content-reveal h3 span {
+  color: #F09120;
+  font-weight: 700;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+.custom-content-reveal p {
+  text-align: left;
+  width: 95%;
+  margin: 1em auto 0 auto;
+}
+.custom-content-reveal img {
+  width: 10em;
+  border: 2px solid #093B0D;
+}
+.custom-content-reveal a {
+  font-size: 1em;
+  float: right;
+  margin-top: 1em;
+}
+.mEvent.row {
+  border-bottom: 1px solid #D3E7CD;
 }
 .detailsPanel {
   background-color: #fff;
@@ -558,6 +894,12 @@ a#nextMonth:hover {
 }
 .accordion .accordion-navigation>.content.active, .accordion dd>.content.active {
   background: #ADC5A6;
+  padding: 0 .5em .5em;
+  margin: 0;
+}
+.accordion-navigation p {
+  color: #304B22;
+  margin: 1em auto 0;
 }
 .dateList ul.accordion {
   list-style-type: none;
@@ -579,7 +921,10 @@ a#nextMonth:hover {
   display: block;
   font-size: 1em;
   font-weight: 700;
-  padding: .5em;
+  padding: .1em;
+}
+.dateList ul.accordion >li.accordion-navigation > a{
+  padding:.5em
 }
 
 .dateList ul.accordion li.accordion-navigation a:hover {
@@ -590,7 +935,7 @@ a#nextMonth:hover {
   background-color: #0F552E;
   color: #F5F9F1;
 }
-.dateList ul.accordion li.accordion-navigation.heading > a {
+.dateList ul.accordion li.accordion-navigation.heading a,  .dateList ul.accordion li.accordion-navigation li{
   color: #F5F9F1;
 }
 .dateList ul.accordion .accordion-navigation.planting, .accordion .accordion-navigation.planting.active>a {

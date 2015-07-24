@@ -12,11 +12,18 @@
 	$(document).foundation();
 </script>
 
-<!-- Slick -->
-<script type="text/javascript" src="{{ asset('_js/slick.js') }}"></script>
+<!-- Page Dependant Inclusions -->
+@if(!empty($totals))
+	<!-- Arc Text -->
+	<script type="text/javascript" src="{{ asset('_js/jquery.arctext.js') }}"></script>
+@elseif(isset($milestones))
+	<script type="text/javascript" src="{{ asset('_js/data.js') }}"></script>
+	<!-- Calendario -->
+	<script type="text/javascript" src="{{ asset('_js/jquery.calendario.js') }}"></script>
+@else
+	<!-- Slick -->
+	<script type="text/javascript" src="{{ asset('_js/slick.js') }}"></script>
+@endif
 
-<!-- Arc Text -->
-<script type="text/javascript" src="{{ asset('_js/jquery.arctext.js') }}"></script>
-
-<!-- My jQuery -->
+<!-- My Scripts-->
 <script type="text/javascript" src="{{ asset('_js/scripts.js') }}"></script>
