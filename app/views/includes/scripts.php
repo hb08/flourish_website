@@ -26,23 +26,32 @@ function selectFunc(val){
 // Function called on shape click on Sidebar
 function shapeFunc(shape){
   type = shape;
-  if(shape == 'square'){
-    shapes.push( new Square() );
+  var error = document.getElementById('noPlant');
+  // Only make shapes if there is text
+  if(shapeText){
+    if(shape == 'square'){
+      shapes.push( new Square() );
+    }
+    if(shape == 'rectangle'){
+      shapes.push( new Rectangle() );
+    }
+    if(shape == 'circle'){
+      shapes.push( new Circle() );
+    }
+    // Add to Plant List
+    if(shapeText == undefined){
+      var el = document.getElementById('selectPlant');
+      shapeText =  el.options[el.selectedIndex].value;
+    }
+    plants = shapeText + ', ';
+    shapeNum++;
+    redraw();
+    // Hide any errors that may have been shown
+    $(error).addClass('hidden');
+  }else{
+  // Otherwise tell them what to do
+    $(error).removeClass('hidden');
   }
-  if(shape == 'rectangle'){
-    shapes.push( new Rectangle() );
-  }
-  if(shape == 'circle'){
-    shapes.push( new Circle() );
-  }
-  // Add to Plant List
-  if(shapeText == undefined){
-    var el = document.getElementById('selectPlant');
-    shapeText =  el.options[el.selectedIndex].value;
-  }
-  plants = shapeText + ', ';
-  shapeNum++;
-  redraw();
 }
 // Create Shape Superclass
 var Shape = function(){

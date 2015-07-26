@@ -2,6 +2,7 @@
 @section('content')
 <div class="row">
   <h1 class="pageTitle">Garden Plotter</h1>
+  <p class="hidden error" id="noPlant">Select a plant <i>before</i> selecting a shape!</p>
 </div>
 <div class="row">
     <div class="row">

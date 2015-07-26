@@ -136,7 +136,7 @@ footer p {
   margin-bottom: 0;
   line-height: 1.1em;
 }
-p#errorP {
+p#errorP, p.error {
   color: red;
   padding: .3em;
   margin-bottom: 0;

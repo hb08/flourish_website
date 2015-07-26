@@ -39,8 +39,7 @@ class PlotController extends BaseController {
 				// If this is a zip code
 				if($n == 'zip'){
 					// Pull all for zip code
-					$z = (int) DB::table('zip_zone')->where('zipcode', Session::get('zip'))->pluck('zone_number');
-					$hzone = DB::table('hzone')->where('zone_number', $z)->pluck('hz_id');
+					$hzone = (int) DB::table('zip_zone')->where('zipcode', Session::get('zip'))->pluck('zone_number');
 					$zoneRange = array();
 					// Ensure Zone is entire selection for Zip
 					switch($hzone){
