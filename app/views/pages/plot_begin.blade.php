@@ -47,7 +47,7 @@
           @foreach($userList as $list)
             @if($counter == $count) <!-- Check if this is the end item using counter -->
               <div class="medium-6 columns text-left end">
-            @else <!-- Otherewise don't add end class, but do add to counter -->
+            @else <!-- Otherwise don't add end class, but do add to counter -->
               <div class="medium-6 columns  text-left ">
                 <?php $counter += 1; ?>
             @endif

@@ -9,7 +9,7 @@
 			<a href="account"  id="noLink"><span class="icon"></span><p>My Account</p></a>
 			<ul class="dd">
 				<li><a href="#" data-reveal-id="profilePanel" >My Profile</a></li>
-				<li><a href="logout">Logout</a></li>
+				<li><a href="../logout">Logout</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -24,7 +24,7 @@
 		<a href="account"  id="noLink"><span class="icon"></span><p>My Account</p></a>
 		<ul class="dd">
 			<li><a href="#" data-reveal-id="profilePanel" >My Profile</a></li>
-			<li><a href="logout">Logout</a></li>
+			<li><a href="../logout">Logout</a></li>
 		</ul>
 	</li>
 </ul>

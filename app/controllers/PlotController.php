@@ -164,8 +164,8 @@ class PlotController extends BaseController {
 				$size = json_decode($thisGarden['0']->size);
 				$garden_name = $thisGarden['0']->name;
 				// Pull all for zip code
-				$z = DB::table('zip_zone')->where('zipcode', Session::get('zip'))->pluck('zone_number');
-				$hzone = DB::table('hzone')->where('zone_number', $z)->pluck('hz_id');
+				$zi = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
+				$hzone = DB::table('zip_zone')->where('zipcode', $zi)->pluck('zone_number');
 				$zoneRange = array();
 				// Ensure Zone is entire selection for Zip
 				switch($hzone){

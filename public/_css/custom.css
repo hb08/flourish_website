@@ -86,7 +86,9 @@
   list-style-type: none;
 }
 
-
+.welcome a {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.22);
+}
 /*				Panel Grid				*/
 
 .panel-grid {
@@ -714,11 +716,11 @@ li.plant {
 }
 
 .custom-content-reveal a {
-	color: #ef4f69;
+	color: #E75C24;
 }
 
 .custom-content-reveal a:hover {
-	color: #333;
+	color: #F09120;
 }
 
  /* Modifications */

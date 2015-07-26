@@ -42,7 +42,7 @@
 	<div class="welcome medium-5 columns medium-offset-1 ">
 		<h1>Welcome to Flourish!</h1>
 		<p>
-			The Sunshite State is the perfect place to grow your very own fruits and vegetables. Finding information on gardening in a state with mild winters can be incredibily defficult, but Flourish is here, to provide you all you need to know to get started on your very own edible garden.
+			The Sunshine State is the perfect place to grow your very own fruits and vegetables. Finding information on gardening in a state with mild winters can be incredibly difficult, but Flourish is here, to provide you all you need to know to get started on your very own edible garden.
 		</p>
 		<ul>
 			<li><a href="search">Search</a> for plants in your zip code.</li>

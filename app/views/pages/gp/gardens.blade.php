@@ -15,7 +15,7 @@
 			<div class="medium-3 columns side-bar">
 				<ul class="medium-12 columns">
 					@foreach($gardens as $garden)
-						<!-- If $thisPlant exsits, and is the same as this number -->
+						<!-- If $thisPlant exists, and is the same as this number -->
 								@if(isset($thisPlant) && $thisPlant == $garden->id)
 									<li class="selected">
 								@else
