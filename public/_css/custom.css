@@ -171,9 +171,9 @@
   bottom: -10em;
   display: none;
   left: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 11.7em;
+  top: 0;
   z-index: 1;
   left: 0;
 }
@@ -650,7 +650,7 @@ li.plant {
 
 .custom-content-reveal {
 	background: #f6f6f6;
-	background: rgba(246, 246, 246, 0.9);
+	background: rgba(246, 246, 246, 0.95);
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -1335,11 +1335,17 @@ div#square {
 div#circle {
   border-radius: 50%;
 }
-
 canvas#gardenCanvas {
    border: 2px solid #0F552E;
  }
-
+ .sizeDisplay {
+   display: block;
+   margin: 0 auto;
+ }
+ .sizeDisplay p {
+   display: inline-block;
+   width: 15em;
+ }
 /*  Save Dialog Panel */
 #saveDialog.panel.reveal-modal {
   height: 17em;

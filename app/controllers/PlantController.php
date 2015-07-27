@@ -406,8 +406,37 @@ class PlantController extends BaseController {
       DB::table('garden_plots')->where('garden_id', $pid)->delete();
       return Redirect::to('/gp/gardens/');
     }else{
-      DB::table('user_plants')->where('plant_id', $pid)->where('user_id', Session::get('user'))->delete();
-      return Redirect::back();
+      $lid = Input::get('addList');
+      $ulists = User::userLists();
+     if($lid != ''){ // If there are lists checked
+        // Every list checked should have plant added to DB if it is not in there
+        foreach($lid as $l){
+          $check = DB::table('user_plants')->where('list_id', $l)->where('plant_id', $pid)->pluck('id');
+          if($check == null){ // Add if not in the DB
+            DB::table('user_plants')->insert(
+              array(
+                'user_id'=> Session::get('user'),
+                'plant_id'=> $pid,
+                'list_id' => $l
+                )
+            );
+          }
+          // Check if this list is in the ulists
+          foreach($ulists as $u => $v){
+            // If it is this list
+            if($l == $v){
+              // Remove it
+              unset($ulists[$u]);
+            }
+          }
+        }
+      }
+      // Remove everything left on ulists from DB
+      foreach($ulists as $ul){
+        DB::table('user_plants')->where('plant_id', $pid)->where('list_id', $ul)->delete();
+      }
+
+    return Redirect::back();
     }
   }// End Remove Plant
 

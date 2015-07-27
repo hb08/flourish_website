@@ -18,6 +18,7 @@
   var xlength;
   var ylength;
   var cellSize;
+  var shapeOn;
 
 // Get text from select box on change
 function selectFunc(val){
@@ -78,6 +79,7 @@ function mousePressed(){
     for(var i = 0; i < shapes.length; i++){
         if( shapes[i].checkClick() ){
           shapes[i].pressed();
+          shapeOn = shapes[i].idMe();
         }
     }
   }
@@ -88,14 +90,33 @@ function mouseUp(){
       shapes[i].released();
     }
   }
+  shapeOn = undefined;
+}
+function keyPressed(){
+  for( var i = 0; i < shapes.length; i++ ){
+    if(currentShape == shapes[i].idMe() ){
+      shapes[i].keyPressed();
+    }
+  }
 }
 // Shape Prototype Methods
+Shape.prototype.keyPressed = function(){
+  if(keyCode === SHIFT && shapeOn == this.idMe()){
+      var shapeIndex = shapes.indexOf(this);
+      if(shapeIndex > -1){
+        shapes.splice(shapeIndex, 1);
+      }
+      redraw();
+  }
+};
 Shape.prototype.pressed = function(){
   currentShape = this.id;
+  shapeOn = this.id;
 };
 Shape.prototype.released = function(){
   var changeX = mouseX;
   var changeY = mouseY;
+  shapeOn = undefined;
   // Snap to grid
     // If mouse position is not divisble by cellSize evenly,
     if(changeX % cellSize != 0 ){

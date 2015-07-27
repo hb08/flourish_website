@@ -95,5 +95,5 @@
 		@endif
 		</div>
 	</div> <!-- End Panel Content -->
-	@include('includes/addRemovePanels');
+	@include('includes/addRemovePanels')
 @stop

@@ -22,15 +22,19 @@
           <div id="circle" onclick="shapeFunc('circle')">
           </div>
         </div>
+        <p>To delete a shape, click and hold the shape and press the SHIFT button.</p>
         <a href="#" class="linkButton save_garden" data-reveal-id="saveDialog">Save Garden</a>
       </div>
       <div class="medium-8 end columns"> <!-- Canvas -->
         <div id="canvas_frame">
           @include('includes.scripts')
         </div>
-        <p class="row"><span id="width">{{$input["width"]}}</span> x <span id="height">{{$input["height"]}}</span></p>
+        <div class="sizeDisplay">
+          <p><span id="width">{{$input["width"]}}</span> x <span id="height">{{$input["height"]}}</span></p>
+          <p>1 square = 1ft<sup>2</sup></p>
+        </div>
       </div>
     </div>
 </div> <!-- End Row -->
-@include('includes.saveGarden');
+@include('includes.saveGarden')
 @stop

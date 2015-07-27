@@ -118,6 +118,11 @@ class PlotController extends BaseController {
 			$gardenId = Session::get('gid');
 			Session::forget('gid');
 			$name = Input::get('garden_name');
+			$name;
+			// Generic name if no input from user
+			if($name == ''){
+				$name = "My Garden";
+			}
 			$check = DB::table('garden_plots')->where('user_id', Session::get('user'))->where('garden_name', $name)->pluck('garden_id');
 			$i = 1;
 			$garden_code = Input::get('shapes');
