@@ -15,7 +15,6 @@ html {
   background: linear-gradient(to bottom, #ceffbf 15%, #efffea 24%, #ffffff 100%);
   /* W3C */
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ceffbf', endColorstr='#ffffff', GradientType=0);
-  /* IE6-9 */
   height: 100%;
   background-size: cover;
   background: #70bg32;
@@ -23,7 +22,14 @@ html {
   max-width: 1465px;
   overflow-x: hidden;
 }
-
+body {
+  background-color: transparent;
+  font-size: 1em;
+  font-family: 'Comfortaa';
+  max-width: 1465px;
+  margin: 0 auto;
+  min-width: 1130px;
+}
 header {
   margin-bottom: 1em;
 }
@@ -56,13 +62,6 @@ h2, .searchResultInfo span, h3, h4 {
 }
 body, .center {
   text-align: center;
-}
-
-body {
-  background-color: transparent;
-  max-width: 1465px;
-  margin: 0 auto;
-  min-width: 1130px;
 }
 .hidden, input.hidden {
   display: none;

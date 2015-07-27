@@ -1,7 +1,7 @@
 /* Draw in all stylesheets needed */
 @import url(http://fonts.googleapis.com/css?family=Rochester|Cherry+Swash:400,700|Comfortaa:300,400,700|Milonga);
-@import url('foundation.min.css');
 @import url('normalize.css');
+@import url('foundation.min.css');
 @import url('slick.css');
 @import url('slick-theme.css');
 /* Custom CSS */

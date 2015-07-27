@@ -61,12 +61,13 @@ var mileEvents = {};
 for(var i = 0; i < ms.length; i++){
 	var ev = ms[i]['date'];
 	// format date for cal
-	ev += " 00:00:01";
+	ev += "T17:00:00Z";
 	ev = new Date(ev);
 	var date = ('0' + (ev.getMonth()+1)).slice(-2) + '-'
              + ('0' + ev.getDate()).slice(-2) + '-'
              + ev.getFullYear();
 	var event = ms[i]['text'];
+	console.log(ev);
 	if(mileEvents[date]){
 		mileEvents[date] += "<div class='mEvent row'>" + event + "</div>";
 	}else{

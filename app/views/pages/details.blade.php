@@ -39,7 +39,7 @@
 		<div class="medium-2 columns toc">
 			<ul>
 				<li class="descrip"><a href="#description">Plant Description</a></li>
-				<li class="prep"><a href="#prep">Preperation</a></li>
+				<li class="prep"><a href="#prep">Preparation</a></li>
 				<li class="plant"><a href="#planting">Planting</a></li>
 				<li class="care"><a href="#care">Care</a></li>
 				<li class="harvest"><a href="#harvest">Harvest</a></li>
@@ -49,15 +49,17 @@
 			<h3 id="description">Plant Description</h3>
 			<p>{{$info->plant_descrip}}</p>
 			<hr>
-			<h3 id="prep">Preperation</h3></h2>
+			<h3 id="prep">Preparation</h3></h2>
 			<p>{{$info->plant_prep}}</p>
 			<h4 id="soil">Soil Needs</h4>
 			<p>{{$info->soil_needs}}</p>
 			<hr>
 			<h3 id="planting">Planting</h3>
-			<p class="medium-12 columns">{{$info->planting}}</p>
-			<p class="medium-2 columns">Depth: {{$info->seed_depth}}</p>
-			<p class="medium-3 columns end">Spacing: {{$info->plant_space}}</p>
+			<p>{{$info->planting}}</p>
+			<div class="row">
+				<p class="medium-2 columns">Depth: {{$info->seed_depth}}</p>
+				<p class="medium-3 columns end">Spacing: {{$info->plant_space}}</p>
+			</div>
 			<hr>
 			<h3 id="care">Care</h3>
 			<p>{{$info->care}}</p>

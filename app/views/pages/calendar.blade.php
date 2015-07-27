@@ -125,6 +125,7 @@
 				</div>
 			<div>
 	</div><!-- End Calendar Row -->
+	@include('includes.cal_script')
 	@include('includes.addRemoveMilestone')
 </div>
 @stop

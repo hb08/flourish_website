@@ -1003,9 +1003,10 @@ table tr th, table tr td, table tr {
   position: absolute;
   font-size: 1.5em;
   top: .3em;
-  left: 2.2em;
+  left: 60px;
   text-align: center;
-  width: 2em;
+  width: 60px;
+  display: block;
 }
 
 /* Panel */
@@ -1114,14 +1115,15 @@ path {
   stroke: #093b0d;
 }
 .dialLabel {
-  display: none;
   font-size: 1.2em;
-  width: 4em;
+  width: 71px;
   text-align: center;
   position: absolute;
-  left: 6em;
-  top: 4.7em;
+  left: 101px;
+  top: 78px;
   line-height: 1.1em;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 p.tilted {
   height: 235px;

@@ -9,8 +9,11 @@
 	<meta name="description" content="An easy to online resource specific to fruits and veggies that grow in Florida, with a plant directory, plant lists, garden plotter, tracker and calendar.">
 	<meta name="keywords" content="Florida gardening, vegetables, fruit, garden planner, garden plotter, garden search, garden track, edible garden">
 	<title>{{$title}}</title>
+	<script type="text/javascript" src="{{ asset('_js/vendor/modernizr.js') }}"></script>
 	@if(!empty($plants) || !empty($size))
 		<!-- p5.js -->
 		<script language="javascript" type="text/javascript" src="{{ asset('_js/p5.js') }}"></script>
 		<script language="javascript" type="text/javascript" src="{{ asset('_js/p5.dom.js') }}"></script>
 	@endif
+	<!-- jQuery -->
+	<script type="text/javascript" src="{{ asset('_js/vendor/jquery.js') }}"></script>
