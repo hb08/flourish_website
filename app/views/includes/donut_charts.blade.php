@@ -1,10 +1,10 @@
 <script type="text/javascript">
-  var splitText = function(type){
+  var parsingText = function(type){
     var final = [];
     var thisType = type;
     var textChange = document.getElementById(thisType).innerHTML;
-    var splitText = textChange.split("|");
-    splitText.forEach(function(e){
+    var parsingText = textChange.split("|");
+    parsingText.forEach(function(e){
       // For every split item
       var finalSplit = e.split(",");
       // Check if it's null (end) if not, split and add
@@ -17,10 +17,10 @@
     })
     return final;
   }
-  var water = splitText('water');
-  var soil = splitText('soil');
-  var sun = splitText('sun')
-  var diff = splitText('diff');
+  var water = parsingText('water');
+  var soil = parsingText('soil');
+  var sun = parsingText('sun')
+  var diff = parsingText('diff');
 
   drawThisChart( water, 'water');
   drawThisChart( soil, 'soil');

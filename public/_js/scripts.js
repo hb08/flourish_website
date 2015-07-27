@@ -25,9 +25,6 @@ if(document.getElementById("index") ){
 		});
 	}
 
-// Calendar
-if(document.getElementById('calendar')){
-}
 	// Save Garden
 	$('.save_garden').click(function(){
 	  var name = document.getElementById('garden_name').value;
@@ -63,13 +60,6 @@ if(document.getElementById('calendar')){
 
 	// Curve Text On GO only
 	if(document.getElementById('diffchart')){
-			var totalCount = 0;
-		// Parse all needs for all dials and sepearte by type, adding new text to page
-		var allDials = [];
-		allDials['water'] = splitText('water');
-		allDials['soil'] = splitText('soil');
-		allDials['sun'] = splitText('sun')
-		allDials['diff'] = splitText('diff');
 		function splitText(thisType){ // Splits the text into an  array
 			var textChange = document.getElementById(thisType).innerHTML;
 			var splitText = textChange.split("|");
@@ -77,6 +67,10 @@ if(document.getElementById('calendar')){
 			var start = '#' + thisType + 'dial';
 			var i = 0;
 			splitText.forEach(function(e){
+					function init(){
+						// Get number of current
+						$arcing.show().arctext({radius:225});
+					}
 					// For every split item
 					var finalSplit = e.split(",");
 					// Check if it's null (end) if not, split and add
@@ -95,10 +89,6 @@ if(document.getElementById('calendar')){
 						var coverUp = '#' + thisType + 'dial .dialLabel';
 						$(coverUp).css({'z-index' : 4, 'background-color': 'white'})
 						init();
-						function init(){
-							// Get number of current
-							$arcing.show().arctext({radius:225});
-						}
 					}
 				}
 			})
@@ -106,6 +96,15 @@ if(document.getElementById('calendar')){
 			totalCount = 0;
 			return final;
 		} // End SplitText Function
+
+		var totalCount = 0;
+		// Parse all needs for all dials and sepearte by type, adding new text to page
+		var allDials = [];
+		allDials['water'] = splitText('water');
+		allDials['soil'] = splitText('soil');
+		allDials['sun'] = splitText('sun')
+		allDials['diff'] = splitText('diff');
+
 		function rotateLabels(dial, type){
 			var tc = dial['totalCount'];
 			var rotation = 0;
@@ -123,7 +122,7 @@ if(document.getElementById('calendar')){
 				}
 				rotateThis = 'rotate(' + rotation + 'deg)';
 				var elem = $('#' + type + '_arc_' + ii);
-				elem.css({"transform": rotateThis});
+				elem.css({"transform": rotateThis, "-webkit-transform" : rotateThis, "-ms-transform" : rotateThis});
 				rotation += thisR;
 			}
 		}
