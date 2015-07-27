@@ -109,10 +109,10 @@
 					@endforeach
 				</select>
 			</div>
-	{{ Form::close() }}
 		</div>
 	</div>
 </div>
+{{ Form::close() }}
 <div class="row searchResultInfo">
 <p>{{$count}} results for <span>{{$zip}}</span></p>
 </div>
