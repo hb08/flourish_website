@@ -9,7 +9,7 @@
 @endif
 <div class="row" id="index">
 	<div class="medium-6 small-12 columns slides" >
-		<div>
+		<div class="">
 			<img src="{{ asset('_images/image_slider/slider_1_strawberry.jpg') }}" alt="Strawberries | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
 				<p class="medium-9 small-9 columns">
@@ -21,7 +21,7 @@
 				</a>
 			</div>
 		</div>
-		<div>
+		<div class="hideStart hidden">
 			<img src="{{ asset('_images/image_slider/slider_2_broccoli.jpg') }}" alt="Broccoli | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
 				<p class="medium-9 small-9 columns">
@@ -33,7 +33,7 @@
 				</a>
 			</div>
 		</div>
-		<div>
+		<div class="hideStart hidden">
 			<img src="{{ asset('_images/image_slider/slider_3_peppers.jpg') }}" alt="Bell Peppers | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
 				<p class="medium-9 small-9 columns">
