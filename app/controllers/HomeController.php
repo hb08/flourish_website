@@ -20,6 +20,7 @@ class HomeController extends BaseController {
 			$uid = DB::table('users')->where('user_name', $user_name)->pluck('user_id');
 			$userZip = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
 			// Add User Id and Zip to SESSION USER
+			Session::put('ustatus', 1);
 			Session::put('user', $uid);
 			Session::put('zip', $userZip);
 			// Create Mandatory Plant Lists
@@ -29,14 +30,13 @@ class HomeController extends BaseController {
 				array('user_id' => $uid, 'user_listname' => 'My List'),
 			));
 			// Return to Previous Page
-			return Redirect::back();
+			return Redirect::to('/');
 		// If there is a user with this name already
 		}else{
 			// Return with message
 			$msg = $user_name . " is a user already. Please try logging in with that name, or registering a new one.";
 			return Redirect::back()->with('errorMsg', $msg);
 		}
-		var_dump( $name_search);
 	}
 /* Logging in */
 	public function doLogin()

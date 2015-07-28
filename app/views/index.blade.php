@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-@if(!empty(Session::get('errorMsg')))
+@if(Session::get('errorMsg'))
 <div class="row">
 	<p id='errorP'>{{Session::get('errorMsg')}}</p>
 </div>
