@@ -1,5 +1,12 @@
 @extends('layouts.master')
 @section('content')
+
+@if(!empty(Session::get('errorMsg')))
+<div class="row">
+	<p id='errorP'>{{Session::get('errorMsg')}}</p>
+</div>
+	<?php Session::forget('errorMsg') ?>
+@endif
 <div class="row" id="index">
 	<div class="medium-6 small-12 columns slides" >
 		<div>
@@ -53,7 +60,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="medium-3 small-10 small-offset-1 end columns">
+	<div class="medium-3  columns">
 		<div class="panel-grid">
 			<a href="search">
 				<h1><span class="icon search"></span>Plant Directory</h1>
@@ -61,7 +68,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-3  small-10 small-offset-1 end columns">
+	<div class="medium-3 columns">
 		<div class="panel-grid">
 			<a href="plot">
 				<h1><span class="icon plot"></span>Garden Plotter</h1>
@@ -69,7 +76,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-3  small-10 small-offset-1 end columns">
+	<div class="medium-3  columns">
 		<div class="panel-grid">
 			<a href="calendar">
 				<h1><span class="icon calendar"></span>My Calendar</h1>
@@ -77,7 +84,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-3 small-10 small-offset-1  end columns">
+	<div class="medium-3 columns">
 		<div class="panel-grid">
 			<a href="overview">
 				<h1><span class="icon overview"></span>Garden Overview</h1>

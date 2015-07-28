@@ -50,7 +50,7 @@ class HomeController extends BaseController {
 		$validator = Validator::make(Input::all(), $rules);
 
 		if ($validator->fails()) {
-		    return Redirect::to('login')
+				return Redirect::back()
 		        ->withErrors($validator) // send back all errors to the login form
 		        ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 		} else {
@@ -63,17 +63,17 @@ class HomeController extends BaseController {
 		$check = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('password');
 			// attempt to do the login
 			if ($check)	{
-			if( Hash::check($userdata['password'], $check))
-			{
-				// Add User Status, Id, and Zip to SESSION USER
-				$uid = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('user_id');
-				$userZip = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
-				Session::put('ustatus', 1);
-				Session::put('user', $uid);
-				Session::put('zip', $userZip);
-						return Redirect::back();
-			}
-			return Redirect::to('register');
+				if( Hash::check($userdata['password'], $check)){
+					// Add User Status, Id, and Zip to SESSION USER
+					$uid = DB::table('users')->where('user_name', $userdata['user_name'])->pluck('user_id');
+					$userZip = DB::table('users')->where('user_id', $uid)->pluck('zip_code');
+					Session::put('ustatus', 1);
+					Session::put('user', $uid);
+					Session::put('zip', $userZip);
+							return Redirect::back();
+				}
+				Session::put('errorMsg', 'Incorrect Login!');
+			return Redirect::to('/');
 			} else {
 					// validation not successful, send back to form
 					return Redirect::to('/');
