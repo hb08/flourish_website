@@ -1,11 +1,11 @@
 @extends('layouts.master_panel')
 @section('content')
 	<div class="row panel-nav">
-		<ul class="medium-6 columns medium-centered">
-			<li class="medium-3 columns"><a href="growing"><span class="hideWords">Growing</span><span class="showNumbers">{{$totals['counts']['growing']}}</span></a></li>
-			<li class="medium-3 columns listed"><a href="list"><span class="hideWords">Listed</span><span class="showNumbers">{{$totals['counts']['plants']}}</span></a></li>
-			<li class="medium-3 columns gardens  selected"><a href="gardens"><span class="hideWords">Gardens</span><span class="showNumbers">{{$totals['counts']['plots']}}</span></a></li>
-			<li class="medium-3 columns waiting"><a href="waiting"><span class="hideWords">Waiting</span><span class="showNumbers">{{$totals['counts']['waiting']}}</span></a></li>
+		<ul class="medium-6 small-12 columns medium-centered">
+			<li class="medium-3 small-3 columns"><a href="growing"><span class="hideWords">Growing</span><span class="showNumbers">{{$totals['counts']['growing']}}</span></a></li>
+			<li class="medium-3 small-3 columns listed"><a href="list"><span class="hideWords">Listed</span><span class="showNumbers">{{$totals['counts']['plants']}}</span></a></li>
+			<li class="medium-3 small-3 columns gardens  selected"><a href="gardens"><span class="hideWords">Gardens</span><span class="showNumbers">{{$totals['counts']['plots']}}</span></a></li>
+			<li class="medium-3 small-3 columns waiting"><a href="waiting"><span class="hideWords">Waiting</span><span class="showNumbers">{{$totals['counts']['waiting']}}</span></a></li>
 		</ul>
 	</div>
 	<div class="row panel-content">

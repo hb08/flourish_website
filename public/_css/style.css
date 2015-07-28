@@ -8,3 +8,4 @@
 @import url('common.css'); /* Common Elements and Navbar */
 @import url('forms.css'); /* All form styling */
 @import url('custom.css'); /* Individual Pages */
+@import url('media.css'); /* Media Query changes */

@@ -21,24 +21,24 @@
       </div>
       <!-- Width Indputs -->
       <div class="row medium-collapse">
-        <div class="medium-11 columns medium-offset-1 plot_inputs medium-offset">
-          <div class="medium-2  medium-offset-2 columns">
+        <div class="medium-11 small-11 small-offset-1 columns medium-offset-1 plot_inputs medium-offset">
+          <div class="medium-2  small-2 small-offset-1 medium-offset-2 columns">
             <input type="number" name="width" min="2" max="15" placeholder="W"/>
           </div>
-          <label class="medium-1 columns text-left" for="width">feet</label>
-          <div class="medium-2 columns" >
+          <label class="medium-1 small-2 columns text-left" for="width">feet</label>
+          <div class="medium-2 small-2 columns" >
             <input type="number" name="height"  min="2" max="15" placeholder="H" />
           </div>
-          <label class="medium-1 columns end text-left" for="height">feet</label>
+          <label class="medium-1 small-1 columns end text-left" for="height">feet</label>
         </div>
       </div>
       <div class="row">
         <h4 class="medium-3 columns medium-offset-1 end plot text-left">Plant Lists</h4>
       </div>
       <div class="row">
-        <div class="medium-10 columns medium-offset-2 plot_inputs">
+        <div class="medium-10 small-10 small-offset-2 columns medium-offset-2 plot_inputs">
           <!-- Always include zip code list -->
-          <div class="medium-6 columns  text-left ">
+          <div class="medium-6 small-6 columns  text-left ">
             <input type="checkbox" name="garden" value="garden_zip">My Zip Code
           </div>
 
@@ -46,9 +46,9 @@
           <?php $counter = 1; ?>
           @foreach($userList as $list)
             @if($counter == $count) <!-- Check if this is the end item using counter -->
-              <div class="medium-6 columns text-left end">
+              <div class="medium-6  small-6 columns text-left end">
             @else <!-- Otherwise don't add end class, but do add to counter -->
-              <div class="medium-6 columns  text-left ">
+              <div class="medium-6  small-6 columns  text-left ">
                 <?php $counter += 1; ?>
             @endif
                 <!-- Content for all -->

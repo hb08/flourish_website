@@ -1,0 +1,76 @@
+@media only screen and (max-width: 40em) {
+  html {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  body {
+    max-width: 95%;
+    min-width: 95%;
+    font-size: .8em;
+    margin-left: .2em;
+  }
+.dateList, .choice {
+    margin-bottom: 3em;
+}
+/* Index */
+  .slides .cap {
+    width: 46em;
+  }
+/* Search */
+  .searchForm input[type="submit"].linkButton {
+    left: -2em;
+  }
+  .filterLabel {
+    text-align: left;
+  }
+  .ar {
+    top: 4px;
+  }
+/* Garden Plot - New */
+  .plot_inputs input[type="checkbox"]{
+    margin-bottom: 1em;
+  }
+/* Garden Plot - Garden */
+  #shapes #square, #shapes #circle, #shapes #rectangle  {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  #shapes #rectangle {
+    width: 12em;
+  }
+  div#calAdd {
+      height: 40em;
+  }
+/* Garden Overview */
+  .iconLinks > div {
+      margin-bottom: 3em;
+  }
+/* Garden Panels */
+  .panel-nav ul {
+    margin-bottom: 0;
+  }
+  .side-bar ul {
+    margin-left: 0;
+  }
+  .panel-page {
+    margin-top: 3em;
+    margin-left: 1.1em;
+    width: 27em;
+  }
+  .panel-page .chart{
+    margin-top: 3em;
+  }
+  .panel-page .chart div:nth-child(2){
+    margin-top: 1em;
+  }
+  .panel-page .chart div:nth-child(2) p {
+    margin-left: 0;
+  }
+  .listings .plantImg {
+      margin-top: 3em;
+  }
+  .listings .ar {
+    right: 2em;
+  }
+} /* max-width 640px, mobile-only styles, use when QAing mobile issues */

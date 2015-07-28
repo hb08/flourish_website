@@ -14,7 +14,7 @@
         </div>
         <p class="medium-12 columns text-center">Planted on</p>
         <div class="row">
-          <div class="medium-5 medium-centered columns">
+          <div class="medium-5 small-6 small-centered medium-centered columns">
             <input type="date" name="startDate" required>
           </div>
         </div>

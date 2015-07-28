@@ -18,17 +18,17 @@
 				<h1>{{$chart->plant_name}}</h1>
 			</div>
 			<div class="tech row">
-				<p class="medium-4 columns">{{$chart->bot_name}}</p>
-				<p class="medium-4 columns">{{$chart->plant_type}}</p>
-				<p class="medium-4 columns">Difficulty: <img src="{{$diff}}" alt="{{$diff}}" class="diffStars"/></p>
+				<p class="medium-4 small-4 columns">{{$chart->bot_name}}</p>
+				<p class="medium-4 small-4 columns">{{$chart->plant_type}}</p>
+				<p class="medium-4 small-4 columns">Difficulty: <img src="{{$diff}}" alt="{{$diff}}" class="diffStars"/></p>
 			</div>
 			<div class="row chart">
-				<div class="medium-5 columns">
+				<div class="medium-5 small-5 columns">
 					<p><span class="spaced">Sun:</span>{{ $chart->sun_need}}</p>
 					<p><span class="spaced">Season:</span>{{ $chart->season_name}}</p>
 					<p><span class="spaced">Soil:</span>{{ $chart->soil_need}}</p>
 				</div>
-				<div class="medium-7 columns bottom">
+				<div class="medium-7 small-7 columns bottom">
 					<p><span class="spaced">Water:</span>{{ $chart->water_need}}</p>
 					<p><span class="spaced">Harvest Time:</span>{{ $chart->harvest_time }}</p>
 				</div>
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="medium-2 columns toc">
+		<div class="medium-2 columns toc show-for-medium-up">
 			<ul>
 				<li class="descrip"><a href="#description">Plant Description</a></li>
 				<li class="prep"><a href="#prep">Preparation</a></li>

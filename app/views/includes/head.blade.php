@@ -2,7 +2,7 @@
 	<!-- My Style sheets -->
 	{{ HTML::style('_css/style.css') }}
 	<!-- View port for responsive design REMOVED until mobile update at later date -->
-		<!--	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="{{ asset('_images/favicon.png') }}" />
 	<!-- SEO Meta Tags -->

@@ -1,15 +1,15 @@
 @extends('layouts.master')
 @section('content')
 <div class="row" id="index">
-	<div class="medium-6 columns slides" >
+	<div class="medium-6 small-12 columns slides" >
 		<div>
 			<img src="{{ asset('_images/image_slider/slider_1_strawberry.jpg') }}" alt="Strawberries | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
-				<p class="medium-9 columns">
+				<p class="medium-9 small-9 columns">
 					<b>Sweet Summer Strawberries</b>
 					can be yours. Easy to care for, and even easier to propogate, start preparing your garden today to reap the rewards for years to come!
 				</p>
-				<a href="details/7" class="medium-3 columns linkButton">
+				<a href="details/7" class="medium-3 small-3 columns linkButton">
 					See More +
 				</a>
 			</div>
@@ -17,11 +17,11 @@
 		<div>
 			<img src="{{ asset('_images/image_slider/slider_2_broccoli.jpg') }}" alt="Broccoli | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
-				<p class="medium-9 columns">
+				<p class="medium-9 small-9 columns">
 					<b>Nothing Beats Broccoli</b>
 					when it comes to a great source of vitamins you can grow in your own backyard. Garden your way to better health today.
 				</p>
-				<a href="details/4" class="medium-3 columns linkButton">
+				<a href="details/4" class="medium-3 small-3 columns linkButton">
 					See More +
 				</a>
 			</div>
@@ -29,17 +29,17 @@
 		<div>
 			<img src="{{ asset('_images/image_slider/slider_3_peppers.jpg') }}" alt="Bell Peppers | Flourish – Your Florida Gardening Guide" />
 			<div class="cap">
-				<p class="medium-9 columns">
+				<p class="medium-9 small-9 columns">
 					<b>Here a Pepper</b>
 					there a pepper, everywhere in Florida grow a pepper. Add a variety of color and flavors to your garden with Bell Peppers.
 				</p>
-				<a href="details/8" class="medium-3 columns linkButton">
+				<a href="details/8" class="medium-3 small-3 columns linkButton">
 					See More +
 				</a>
 			</div>
 		</div>
 	</div>
-	<div class="welcome medium-5 columns medium-offset-1 ">
+	<div class="welcome medium-5 small-12 columns medium-offset-1 ">
 		<h1>Welcome to Flourish!</h1>
 		<p>
 			The Sunshine State is the perfect place to grow your very own fruits and vegetables. Finding information on gardening in a state with mild winters can be incredibly difficult, but Flourish is here, to provide you all you need to know to get started on your very own edible garden.
@@ -53,7 +53,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="medium-3 columns">
+	<div class="medium-3 small-10 small-offset-1 end columns">
 		<div class="panel-grid">
 			<a href="search">
 				<h1><span class="icon search"></span>Plant Directory</h1>
@@ -61,7 +61,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-3 columns">
+	<div class="medium-3  small-10 small-offset-1 end columns">
 		<div class="panel-grid">
 			<a href="plot">
 				<h1><span class="icon plot"></span>Garden Plotter</h1>
@@ -69,7 +69,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-3 columns">
+	<div class="medium-3  small-10 small-offset-1 end columns">
 		<div class="panel-grid">
 			<a href="calendar">
 				<h1><span class="icon calendar"></span>My Calendar</h1>
@@ -77,7 +77,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-3 columns">
+	<div class="medium-3 small-10 small-offset-1  end columns">
 		<div class="panel-grid">
 			<a href="overview">
 				<h1><span class="icon overview"></span>Garden Overview</h1>

@@ -18,7 +18,7 @@ html {
   height: 100%;
   background-size: cover;
   background: #70bg32;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   max-width: 1465px;
   overflow-x: hidden;
 }
