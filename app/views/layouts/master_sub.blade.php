@@ -5,6 +5,7 @@
     @include('includes.head')
 </head>
 <body>
+
     <div class="row">
        <header>
             @include('includes.header')
